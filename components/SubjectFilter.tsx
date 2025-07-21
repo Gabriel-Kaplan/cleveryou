@@ -41,15 +41,18 @@ const SubjectFilter = () => {
             <SelectTrigger className="w-48 h-9 text-sm hover:border-slate-800 focus:border-slate-500 rounded-md">
                 <SelectValue placeholder="Filter by subject" />
             </SelectTrigger>
-            <SelectContent className="min-w-48 bg-white/5 shadow-md rounded-md">
-                <SelectItem value="all" className="text-sm hover:bg-purple-500 hover:text-white px-3 py-2">
+            <SelectContent className="min-w-48 bg-black/70 shadow-md rounded-md">
+                <SelectItem 
+                    value="all" 
+                    className="text-sm !hover:bg-purple-500 hover:!bg-purple-500 data-[highlighted]:bg-purple-500 data-[highlighted]:text-white hover:text-white px-3 py-2 cursor-pointer"
+                >
                     All subjects
                 </SelectItem>
                 {subjects.map((subject) => (
                     <SelectItem 
                         key={subject} 
                         value={subject} 
-                        className="capitalize text-sm hover:bg-purple-500 hover:text-white px-3 py-2"
+                        className="capitalize text-sm !hover:bg-purple-500 hover:!bg-purple-500 data-[highlighted]:bg-purple-500 data-[highlighted]:text-white hover:text-white px-3 py-2 cursor-pointer"
                     >
                         {subject}
                     </SelectItem>

@@ -54,10 +54,10 @@ const Navbar = () => {
                 Home
               </Link>
               <Link href="/companions" className="block px-4 py-3 text-white/90 hover:text-white hover:bg-white/10 rounded-xl transition-all duration-300 font-medium">
-                CleverCoach Library
+                Coach Library
               </Link>
               <Link href="/subscription" className="block px-4 py-3 text-white/90 hover:text-white hover:bg-white/10 rounded-xl transition-all duration-300 font-medium">
-                CleverYou Plans
+                Clever Plans
               </Link>
               <Link href="/features" className="block px-4 py-3 text-white/90 hover:text-white hover:bg-white/10 rounded-xl transition-all duration-300 font-medium">
                 My CleverYou
@@ -105,7 +105,7 @@ const Navbar = () => {
                   alt='CleverYou Logo' 
                   width={32} 
                   height={32}
-                  className="transition-transform duration-300 group-hover:scale-110"
+                  className="transition-transform duration-300"
                 />
                 <div className="absolute inset-0 bg-gradient-to-r from-blue-400/20 to-purple-400/20 rounded-full blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               </div>

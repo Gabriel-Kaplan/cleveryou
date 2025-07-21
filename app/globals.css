@@ -211,8 +211,35 @@ body {
     @apply overflow-y-auto w-full flex flex-col gap-4 max-sm:gap-2 pr-2 h-full text-2xl;
   }
   .transcript-fade {
-    @apply pointer-events-none absolute bottom-0 left-0 right-0 h-40 max-sm:h-20 bg-gradient-to-t from-background via-background/90 to-transparent z-10;
+    @apply pointer-events-none absolute bottom-0 left-0 right-0 h-40 max-sm:h-20 z-10;
+    background: linear-gradient(to top, 
+      rgba(255, 255, 255, 0.9) 0%, 
+      rgba(255, 255, 255, 0.7) 30%, 
+      rgba(255, 255, 255, 0.4) 70%, 
+      rgba(255, 255, 255, 0) 100%
+    );
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-radius: 16px 16px 0 0;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-bottom: none;
+    box-shadow: 0 -8px 32px rgba(255, 255, 255, 0.1);
   }
+
+  .dark .transcript-fade {
+    background: linear-gradient(to top, 
+      rgba(31, 0, 85, 0.95) 0%, 
+      rgba(31, 0, 78, 0.8) 20%, 
+      rgba(29, 0, 55, 0.133) 70%, 
+      rgba(1, 13, 36, 0) 100%
+    );
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: none;
+    box-shadow: 0 -8px 32px rgba(0, 0, 0, 0.3);
+  }
+
 /* Hero Section */
 .hero-section {
   @apply flex items-center justify-between gap-8 py-16 max-lg:flex-col max-lg:text-center;
@@ -415,4 +442,3 @@ body {
     scrollbar-width: none;
   }
 }
-

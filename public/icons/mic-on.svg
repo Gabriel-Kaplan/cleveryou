@@ -1,6 +1,7 @@
-<svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M24.0001 11H12.5217H12V18.9131L16.6957 24.0001H19.8261L24.0001 19.4783V11Z" fill="black" fill-opacity="0.8"/>
-<path d="M18 23.2497C21.3151 23.2497 24.0001 20.5646 24.0001 17.2496V8.99956C24.0001 5.68453 21.3151 2.99951 18 2.99951C14.685 2.99951 12 5.68453 12 8.99956V17.2496C12 20.5646 14.685 23.2497 18 23.2497Z" stroke="#111111" stroke-width="3.6113" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M6.52539 14.4761V17.0261C6.52539 23.3561 11.6704 28.5012 18.0005 28.5012C24.3305 28.5012 29.4756 23.3561 29.4756 17.0261V14.4761" stroke="#111111" stroke-width="3.6113" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M18.0005 28.501V33.001" stroke="#111111" stroke-width="3.6113" stroke-linecap="round" stroke-linejoin="round"/>
+<?xml version="1.0" encoding="utf-8"?><!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
+<svg width="800px" height="800px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M12 19C15.31 19 18 16.31 18 13V8C18 4.69 15.31 2 12 2C8.69 2 6 4.69 6 8V13C6 16.31 8.69 19 12 19Z" stroke="#292D32" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path opacity="0.4" d="M3 11V13C3 17.97 7.03 22 12 22C16.97 22 21 17.97 21 13V11" stroke="#292D32" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path opacity="0.4" d="M9.10938 7.48018C10.8894 6.83018 12.8294 6.83018 14.6094 7.48018" stroke="#292D32" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path opacity="0.4" d="M10.0293 10.4799C11.2293 10.1499 12.4993 10.1499 13.6993 10.4799" stroke="#292D32" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
 </svg>

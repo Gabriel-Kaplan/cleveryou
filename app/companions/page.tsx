@@ -51,12 +51,15 @@ const CompanionsPage = async ({ searchParams }: SearchParams) => {
 
             {/* Main Title */}
             <div className="space-y-4">
-              <h1 className="text-4xl lg:text-6xl font-bold bg-gradient-to-r from-white via-slate-100 to-slate-300 bg-clip-text text-transparent leading-tight">
-                CleverCoach
-                <span className="block text-3xl lg:text-5xl font-light text-slate-400 mt-2">
-                  Library
-                </span>
-              </h1>
+              <h1 className="relative text-6xl md:text-7xl font-black mb-6 px-8 py-4">
+              <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
+                Clever Coach
+              </span>
+              <br />
+              <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
+               Library
+              </span>
+            </h1>
               
               {/* Subtext */}
               <p className="text-lg lg:text-xl text-slate-400 max-w-3xl mx-auto leading-relaxed">

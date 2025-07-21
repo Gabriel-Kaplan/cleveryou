@@ -35,7 +35,7 @@ const HeroSection = () => {
                 <div className="absolute -bottom-1 left-0 right-0 h-1 bg-gradient-to-r from-blue-400/50 to-pink-400/50 rounded-full"></div>
               </span>
               <br />
-              with AI CleverCoaches
+              with Our CleverCoaches
             </h1>
 
             {/* Enhanced subtitle */}

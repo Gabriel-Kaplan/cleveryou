@@ -6,8 +6,8 @@ import {cn} from "@/lib/utils";
 
 const navItems = [
     { label:'Home', href: '/' },
-    { label: 'CleverCoach Library', href: '/companions' },
-    { label: 'CleverYou Plans', href: '/subscription' },
+    { label: 'Coach Library', href: '/companions' },
+    { label: 'Clever Plans', href: '/subscription' },
     { label: 'My CleverYou', href: '/my-journey' },
 ]
 
