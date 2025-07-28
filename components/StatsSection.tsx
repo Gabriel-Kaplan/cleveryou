@@ -11,7 +11,7 @@ const StatsSection = () => {
     },
     { 
       icon: <BookOpen className="w-8 h-8" />, 
-      title: "15+ Subjects", 
+      title: "6 Core Subjects", 
       description: "Comprehensive coverage across all major topics",
       color: "from-emerald-400 to-green-400"
     },

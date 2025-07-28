@@ -55,7 +55,7 @@ const CTA = () => {
                 
                 {/* CTA Actions */}
                 <div className="cta-actions">
-                    <Link href="/companions/new" className="btn-primary group relative inline-flex items-center gap-3 bg-white/10 backdrop-blur-sm hover:from-blue-700 hover:to-purple-700 text-white font-semibold px-8 py-4 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 active:scale-95 border border-white/20 overflow-hidden">
+                    <Link href="/coaches/new" className="btn-primary group relative inline-flex items-center gap-3 bg-white/10 backdrop-blur-sm hover:from-blue-700 hover:to-purple-700 text-white font-semibold px-8 py-4 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 active:scale-95 border border-white/20 overflow-hidden">
                         {/* Glossy overlay */}
                         <div className="absolute inset-0 bg-gradient-to-r from-white/20 via-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                         

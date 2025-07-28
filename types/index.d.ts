@@ -65,12 +65,12 @@ interface Avatar {
   className?: string;
 }
 
-
 interface SavedMessage {
   role: "user" | "system" | "assistant";
   content: string;
 }
 
+// UPDATED: Added sessionAlreadyCreated prop
 interface CompanionComponentProps {
   companionId: string;
   subject: string;
@@ -80,4 +80,20 @@ interface CompanionComponentProps {
   userImage: string;
   voice: string;
   style: string;
+  sessionAlreadyCreated?: boolean; // NEW: Optional prop to indicate session was created server-side
+}
+
+//Added this interface for better session management
+interface SessionHistoryEntry {
+  id: string;
+  companion_id: string;
+  user_id: string;
+  created_at: string;
+}
+
+//Added this for better error handling
+interface ApiResponse<T> {
+  data?: T;
+  error?: string;
+  success: boolean;
 }

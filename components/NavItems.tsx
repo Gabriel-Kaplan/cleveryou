@@ -6,9 +6,9 @@ import {cn} from "@/lib/utils";
 
 const navItems = [
     { label:'Home', href: '/' },
-    { label: 'Coach Library', href: '/companions' },
+    { label: 'Coach Library', href: '/coaches' },
     { label: 'Clever Plans', href: '/subscription' },
-    { label: 'My CleverYou', href: '/my-journey' },
+    { label: 'My CleverYou', href: '/my-cleveryou' },
 ]
 
 const NavItems = () => {

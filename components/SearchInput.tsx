@@ -126,7 +126,7 @@ const SearchInput = () => {
       {/* Search suggestions indicator */}
       {searchQuery && (
         <div className="absolute top-full left-0 right-0 mt-2 text-xs text-slate-400 text-center animate-fade-in">
-          Searching for "{searchQuery}"...
+          Searching for &quot;{searchQuery}&quot;...
         </div>
       )}
     </div>

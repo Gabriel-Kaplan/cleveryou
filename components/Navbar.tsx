@@ -33,6 +33,7 @@ const Navbar = () => {
                 alt='CleverYou Logo' 
                 width={28} 
                 height={28}
+                className="transition-transform duration-300"
               />
               <h3 className='text-white text-lg font-semibold bg-gradient-to-r from-white to-gray-300 bg-clip-text'>Menu</h3>
             </div>
@@ -50,19 +51,19 @@ const Navbar = () => {
           <div className="flex-1 p-6 space-y-8">
             {/* Mobile Nav Items */}
             <div className="space-y-3">
-              <Link href="/" className="block px-4 py-3 text-white/90 hover:text-white hover:bg-white/10 rounded-xl transition-all duration-300 font-medium">
+              <Link href="/" className="block px-4 py-3 text-white/90 hover:text-white hover:bg-white/10 rounded-xl transition-all duration-300 font-medium" onClick={() => setIsMobileMenuOpen(false)}>
                 Home
               </Link>
-              <Link href="/companions" className="block px-4 py-3 text-white/90 hover:text-white hover:bg-white/10 rounded-xl transition-all duration-300 font-medium">
+              <Link href="/coaches" className="block px-4 py-3 text-white/90 hover:text-white hover:bg-white/10 rounded-xl transition-all duration-300 font-medium" onClick={() => setIsMobileMenuOpen(false)}>
                 Coach Library
               </Link>
-              <Link href="/subscription" className="block px-4 py-3 text-white/90 hover:text-white hover:bg-white/10 rounded-xl transition-all duration-300 font-medium">
+              <Link href="/subscription" className="block px-4 py-3 text-white/90 hover:text-white hover:bg-white/10 rounded-xl transition-all duration-300 font-medium" onClick={() => setIsMobileMenuOpen(false)}>
                 Clever Plans
               </Link>
-              <Link href="/features" className="block px-4 py-3 text-white/90 hover:text-white hover:bg-white/10 rounded-xl transition-all duration-300 font-medium">
+              <Link href="/my-cleveryou" className="block px-4 py-3 text-white/90 hover:text-white hover:bg-white/10 rounded-xl transition-all duration-300 font-medium" onClick={() => setIsMobileMenuOpen(false)}>
                 My CleverYou
               </Link>
-              <a href="/contact" className="block px-4 py-3 text-white/90 hover:text-white hover:bg-white/10 rounded-xl transition-all duration-300 font-medium">
+              <a href="/contact" className="block px-4 py-3 text-white/90 hover:text-white hover:bg-white/10 rounded-xl transition-all duration-300 font-medium" onClick={() => setIsMobileMenuOpen(false)}>
                 Contact
               </a>
             </div>
@@ -105,7 +106,7 @@ const Navbar = () => {
                   alt='CleverYou Logo' 
                   width={32} 
                   height={32}
-                  className="transition-transform duration-300"
+                  className="transition-transform duration-300 group-hover:scale-110"
                 />
                 <div className="absolute inset-0 bg-gradient-to-r from-blue-400/20 to-purple-400/20 rounded-full blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               </div>

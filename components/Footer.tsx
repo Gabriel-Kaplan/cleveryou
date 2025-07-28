@@ -1,11 +1,7 @@
 "use client";
 import React, { useState } from "react"
-import {  
-  Facebook, 
-  Twitter, 
-  Instagram, 
-  Linkedin, 
-  Youtube,
+import {    
+  Instagram,  
   Bot,
   Sparkles,
   ExternalLink,
@@ -17,7 +13,10 @@ import {
   FileText,
   Building
 } from "lucide-react"
+import { FaTiktok } from "react-icons/fa";
+import { FaXTwitter } from "react-icons/fa6";
 import Image from "next/image";
+import Link from "next/link";
 
 const Footer = () => {
   const [hoveredSocial, setHoveredSocial] = useState(null)
@@ -26,31 +25,38 @@ const Footer = () => {
   }
 
   const socialLinks = [
-    { icon: Facebook, href: "#", label: "Facebook", color: "from-blue-500 to-blue-600" },
-    { icon: Twitter, href: "#", label: "Twitter", color: "from-sky-400 to-sky-500" },
-    { icon: Instagram, href: "#", label: "Instagram", color: "from-pink-500 to-rose-500" },
-    { icon: Linkedin, href: "#", label: "LinkedIn", color: "from-blue-600 to-blue-700" },
-    { icon: Youtube, href: "#", label: "YouTube", color: "from-red-500 to-red-600" }
+    { icon: FaTiktok, href: "https://www.tiktok.com/@thedevtodefy", label: "Facebook", color: "from-blue-500 to-blue-600" },
+    { icon: FaXTwitter, href: "https://x.com/DevToDefy", label: "Twitter", color: "from-sky-400 to-sky-500" },
+    { icon: Instagram, href: "https://www.instagram.com/devtodefy/", label: "Instagram", color: "from-pink-500 to-rose-500" },
   ]
 
   const footerLinks = {
     platform: [
-      { title: "All Coaches", href: "/companions" },
-      { title: "CleverCoach Lab", href: "/companions/new" },
-      { title: "Learning Paths", href: "/learning-paths" },
-      { title: "Study Groups", href: "/study-groups" },
+      { title: "Home", href: "/" },
+      { title: "Coach Library", href: "/coaches" },
+      { title: "Clever Plans", href: "/subscription" },
+      { title: "My CleverYou", href: "/my-cleveryou" },
+      { title: "CleverCoach Lab", href: "/coaches/new" },
+      //{ title: "Learning Paths", href: "/learning-paths" },
+      //{ title: "Study Groups", href: "/study-groups" },
     ],
-    support: [
-      { title: "Contact Us", href: "#" },
-      { title: "System Status", href: "#" },
-      { title: "Getting Started", href: "/getting-started" },
-      { title: "FAQ", href: "/faq" },
-      { title: "Report Issue", href: "/report" }
+support: [
+      { 
+        title: "Contact Us", 
+        href: "mailto:contact@devtodefy.com?subject=CleverYou Support Inquiry&body=Hello CleverYou Team,%0D%0A%0D%0AI hope this message finds you well. I am reaching out regarding:%0D%0A%0D%0A[Please describe your inquiry or question here]%0D%0A%0D%0AThank you for your time and assistance.%0D%0A%0D%0ABest regards" 
+      },
+      //{ title: "System Status", href: "#" },
+      //{ title: "Getting Started", href: "/getting-started" },
+      { title: "FAQ", href: "/FAQ" },
+      { 
+        title: "Report Issue", 
+        href: "mailto:contact@devtodefy.com?subject=CleverYou Issue Report&body=Hello CleverYou Technical Team,%0D%0A%0D%0AI would like to report an issue I encountered while using CleverYou:%0D%0A%0D%0ACategory: [Bug/Performance/Feature Request/Other]%0D%0ADescription: [Please describe the issue in detail]%0D%0ASteps to reproduce: [If applicable]%0D%0ABrowser/Device: [Your browser and device information]%0D%0A%0D%0AThank you for your attention to this matter.%0D%0A%0D%0ABest regards" 
+      }
     ],
     company: [
-      { title: "About Us", href: "#" },
-      { title: "Careers", href: "#" },
-      { title: "Blog", href: "/blog" },
+      { title: "About Us", href: "/about" },
+      { title: "Careers", href: "https://www.devtodefy.com/careers" },
+      { title: "Blog", href: "https://medium.com/@devtodefy" },
     ],
     legal: [
       { title: "Privacy Policy", href: "/privacy" },
@@ -86,11 +92,17 @@ const Footer = () => {
           <div className="lg:col-span-4 space-y-6">
             <div className="flex items-center gap-3">
               <div className="bg-none rounded-xl flex items-center justify-center">
-                <Image src="/icons/cleveryoulogo.png" alt='CleverYou Logo' width={36} height={36}></Image>
+                <Image 
+                  src="/icons/cleveryoulogo.png" 
+                  alt='CleverYou Logo' 
+                  width={36} 
+                  height={36}
+                  className=""
+                />
               </div>
               <div>
                 <h3 className="text-2xl font-bold bg-gradient-to-r from-slate-100 to-slate-100 bg-clip-text text-transparent">
-                  CleverYou | AI Learning
+                  CleverYou
                 </h3>
               </div>
             </div>
@@ -149,13 +161,13 @@ const Footer = () => {
               <ul className="space-y-3">
                 {footerLinks.platform.map((link, index) => (
                   <li key={index}>
-                    <a 
+                    <Link 
                       href={link.href}
                       className="text-slate-400 hover:text-emerald-300 transition-colors duration-300 flex items-center gap-2 group"
                     >
                       <span>{link.title}</span>
                       <ExternalLink className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                    </a>
+                    </Link>
                   </li>
                 ))}
               </ul>
@@ -169,13 +181,13 @@ const Footer = () => {
               <ul className="space-y-3">
                 {footerLinks.support.map((link, index) => (
                   <li key={index}>
-                    <a 
+                    <Link 
                       href={link.href}
                       className="text-slate-400 hover:text-emerald-300 transition-colors duration-300 flex items-center gap-2 group"
                     >
                       <span>{link.title}</span>
                       <ExternalLink className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                    </a>
+                    </Link>
                   </li>
                 ))}
               </ul>
@@ -189,13 +201,13 @@ const Footer = () => {
               <ul className="space-y-3">
                 {footerLinks.company.map((link, index) => (
                   <li key={index}>
-                    <a 
+                    <Link 
                       href={link.href}
                       className="text-slate-400 hover:text-emerald-300 transition-colors duration-300 flex items-center gap-2 group"
                     >
                       <span>{link.title}</span>
                       <ExternalLink className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                    </a>
+                    </Link>
                   </li>
                 ))}
               </ul>
@@ -209,13 +221,13 @@ const Footer = () => {
               <ul className="space-y-3">
                 {footerLinks.legal.map((link, index) => (
                   <li key={index}>
-                    <a 
+                    <Link 
                       href={link.href}
                       className="text-slate-400 hover:text-emerald-300 transition-colors duration-300 flex items-center gap-2 group"
                     >
                       <span>{link.title}</span>
                       <ExternalLink className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                    </a>
+                    </Link>
                   </li>
                 ))}
               </ul>
@@ -239,7 +251,7 @@ const Footer = () => {
       {/* Scroll to top floating button - alternative */}
       <button
         onClick={scrollToTop}
-        className="fixed bottom-8 right-8 w-12 h-12 bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-700 hover:to-pink-700 rounded-full flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 z-50"
+        className="fixed bottom-8 right-8 w-12 h-12 bg-none border-2 border-slate-500 rounded-full flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 z-50"
       >
         <ChevronUp className="w-6 h-6 text-white" />
       </button>

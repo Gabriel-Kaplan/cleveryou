@@ -1,7 +1,176 @@
+"use client";
 import { PricingTable } from '@clerk/nextjs';
 import React from 'react';
 
 const GlassmorphicPricing = () => {
+  // Dark glassmorphic appearance configuration for Clerk components
+  const darkAppearance = {
+    elements: {
+      // Main container
+      rootBox: {
+        backgroundColor: "transparent",
+      },
+      // Card containers
+     card: {
+      backgroundColor: "#000", // pure black
+      border: "1px solid rgba(255, 255, 255, 0.08)",
+      backdropFilter: "blur(24px)",
+      borderRadius: "20px",
+      boxShadow: "0 12px 40px rgba(0,0,0,0.3)",
+      transition: "transform 0.3s ease",
+    },
+    cardBox__popular: {
+      backgroundColor: "#111827", // slate-900 as popular highlight
+      border: "2px solid rgba(139, 92, 246, 0.4)",
+      transform: "scale(1.04)",
+    },
+      // Plan names
+      planName: {
+        color: "#ffffff",
+        fontSize: "24px",
+        fontWeight: "700",
+      },
+      // Plan descriptions
+      planDescription: {
+        color: "rgba(255, 255, 255, 0.8)",
+        fontSize: "16px",
+      },
+      // Pricing
+      planPrice: {
+        background: "linear-gradient(135deg, #8b5cf6, #ec4899)",
+        backgroundClip: "text",
+        WebkitBackgroundClip: "text",
+        color: "transparent",
+        fontSize: "32px",
+        fontWeight: "800",
+      },
+      planPriceText: {
+        color: "rgba(255, 255, 255, 0.7)",
+      },
+      // Features list
+      planFeatures: {
+        color: "rgba(255, 255, 255, 0.9)",
+      },
+      planFeaturesList: {
+        color: "rgba(255, 255, 255, 0.9)",
+      },
+      planFeaturesListItem: {
+        color: "rgba(255, 255, 255, 0.9)",
+        "&::before": {
+          color: "#8b5cf6",
+        }
+      },
+      // Buttons
+      button: {
+        background: "linear-gradient(135deg, rgba(139, 92, 246, 0.2), rgba(236, 72, 153, 0.2))",
+        border: "1px solid rgba(139, 92, 246, 0.3)",
+        color: "#ffffff",
+        borderRadius: "12px",
+        backdropFilter: "blur(10px)",
+        transition: "all 0.3s ease",
+        padding: "16px 24px",
+        fontSize: "16px",
+        fontWeight: "600",
+        minHeight: "56px",
+        "&:hover": {
+          background: "linear-gradient(135deg, rgba(139, 92, 246, 0.3), rgba(236, 72, 153, 0.3))",
+          border: "1px solid rgba(139, 92, 246, 0.5)",
+          transform: "translateY(-2px)",
+          boxShadow: "0 8px 25px rgba(139, 92, 246, 0.3)",
+        }
+      },
+      // Primary/featured button
+      button__primary: {
+        background: "linear-gradient(135deg, #8b5cf6, #ec4899)",
+        border: "none",
+        color: "#ffffff",
+        fontWeight: "600",
+        padding: "16px 24px",
+        fontSize: "16px",
+        minHeight: "56px",
+        "&:hover": {
+          background: "linear-gradient(135deg, #7c3aed, #db2777)",
+          transform: "translateY(-2px)",
+          boxShadow: "0 8px 25px rgba(139, 92, 246, 0.4)",
+        }
+      },
+      // Popular badge
+      badge: {
+        background: "linear-gradient(135deg, #8b5cf6, #ec4899)",
+        color: "#ffffff",
+        borderRadius: "20px",
+        fontSize: "12px",
+        fontWeight: "600",
+        padding: "4px 12px",
+      },
+      // Text elements
+      text: {
+        color: "rgba(255, 255, 255, 0.9)",
+      },
+      // Headers
+      headerTitle: {
+        color: "#ffffff",
+        
+      },
+      headerSubtitle: {
+        color: "rgba(255, 255, 255, 0.8)",
+      },
+      // Loading states
+      spinner: {
+        color: "#8b5cf6",
+      }
+    },
+    variables: {
+      colorPrimary: "#8b5cf6",
+      colorSuccess: "#10b981",
+      colorWarning: "#f59e0b",
+      colorDanger: "#ef4444",
+      colorNeutral: "rgba(255, 255, 255, 0.7)",
+      colorText: "#ffffff",
+      colorTextSecondary: "rgba(255, 255, 255, 0.8)",
+      colorBackground: "oklch(0.15 0 0)",
+      borderRadius: "16px",
+      fontFamily: "system-ui, -apple-system, sans-serif",
+    }
+  };
+
+  // Checkout modal appearance to match the dark theme
+  const checkoutAppearance = {
+    elements: {
+      modalContent: {
+        backgroundColor: "rgba(15, 23, 42, 0.95)",
+        backdropFilter: "blur(20px)",
+        border: "1px solid rgba(255, 255, 255, 0.1)",
+        borderRadius: "20px",
+      },
+      modalBackdrop: {
+        backgroundColor: "rgba(0, 0, 0, 0.8)",
+      },
+      card: {
+        backgroundColor: "rgba(255, 255, 255, 0.05)",
+        backdropFilter: "blur(20px)",
+        border: "1px solid rgba(255, 255, 255, 0.1)",
+      },
+      headerTitle: {
+        color: "#ffffff",
+      },
+      text: {
+        color: "rgba(255, 255, 255, 0.9)",
+      },
+      button: {
+        background: "linear-gradient(135deg, #8b5cf6, #ec4899)",
+        "&:hover": {
+          background: "linear-gradient(135deg, #7c3aed, #db2777)",
+        }
+      }
+    },
+    variables: {
+      colorBackground: "rgba(15, 23, 42, 0.95)",
+      colorText: "#ffffff",
+      colorPrimary: "#8b5cf6",
+    }
+  };
+
   return (
     <div className="min-h-screen py-16 px-4 relative overflow-hidden">
       {/* Animated background elements */}
@@ -180,25 +349,19 @@ const GlassmorphicPricing = () => {
               </div>
             </div>
 
-            {/* Actual PricingTable */}
+            {/* Actual PricingTable with dark appearance */}
             <div className="pricing-table">
-              <PricingTable />
-            </div>
-          </div>
-        </div>
-
-        {/* Enhanced Bottom CTA */}
-        <div className="text-center mt-20">
-          <div className="relative inline-block">
-            <div className="absolute inset-0 backdrop-blur-xl bg-white/5 rounded-2xl border border-white/10"></div>
-            <div className="relative px-8 py-6">
-              <p className="text-lg text-white/80 mb-6 font-light">
-                Need help choosing? Our expert team is here to guide you.
-              </p>
-              <button className="group relative backdrop-blur-xl bg-gradient-to-r from-white/10 to-white/5 border border-white/20 text-white px-10 py-4 rounded-2xl hover:from-white/20 hover:to-white/10 transition-all duration-500 font-medium text-lg">
-                <span className="relative z-10">Contact Support</span>
-                <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-purple-500/20 to-pink-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-              </button>
+              <PricingTable 
+                appearance={darkAppearance}
+                checkoutProps={{
+                  appearance: checkoutAppearance
+                }}
+                fallback={
+                  <div className="flex justify-center items-center py-20">
+                    <div className="animate-spin rounded-full h-12 w-12 border-2 border-purple-500 border-t-transparent"></div>
+                  </div>
+                }
+              />
             </div>
           </div>
         </div>
@@ -233,6 +396,21 @@ const GlassmorphicPricing = () => {
           @keyframes fade-in {
             0% { opacity: 0; }
             100% { opacity: 1; }
+          }
+
+          /* Additional custom styles for better integration */
+          .pricing-table [data-clerk="card"] {
+            transition: all 0.3s ease;
+          }
+          
+          .pricing-table [data-clerk="card"]:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(139, 92, 246, 0.2);
+          }
+          
+          .pricing-table [data-clerk="button"] {
+            font-weight: 600;
+            letter-spacing: 0.025em;
           }
         `
       }} />

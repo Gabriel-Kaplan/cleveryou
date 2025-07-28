@@ -1,4 +1,4 @@
-import {getCompanion} from "@/lib/actions/companion.actions";
+import {getCompanion, addToSessionHistory} from "@/lib/actions/companion.actions";
 import {currentUser} from "@clerk/nextjs/server";
 import { getSubjectColor } from "@/lib/utils";
 import {redirect} from "next/navigation";
@@ -14,10 +14,22 @@ const page = async ({ params }: CompanionSessionPageProps) => {
     const { id } = await params;
     const coach = await getCompanion(id);
     const user = await currentUser();
-    const { name, subject, topic, duration } = coach;
 
     if(!user) redirect('/sign-in');
-    if(!coach) redirect('/companions')
+    if(!coach) redirect('/companions');
+
+    const { name, subject, topic, duration, voice, style } = coach;
+
+    // CREATE SESSION ON SERVER SIDE - This prevents React rendering issues
+    let sessionCreated = false;
+    try {
+        await addToSessionHistory(id);
+        sessionCreated = true;
+        console.log('Session created server-side for companion:', id);
+    } catch (error) {
+        console.error('Failed to create session server-side:', error);
+        // Don't redirect, just log the error and let component handle it
+    }
 
     return (
         <main className="min-h-screen pt-20 md:pt-25 relative overflow-hidden">
@@ -33,7 +45,7 @@ const page = async ({ params }: CompanionSessionPageProps) => {
                     {/* Navigation - Mobile optimized */}
                     <div className="mb-6 md:mb-12">
                         <Link 
-                            href="/companions" 
+                            href="/coaches" 
                             className="group inline-flex items-center gap-2 md:gap-3 px-3 md:px-4 py-2 rounded-xl md:rounded-2xl backdrop-blur-md bg-white/10 border border-white/20 hover:bg-white/20 transition-all duration-300 hover:scale-105 shadow-xl hover:shadow-2xl text-sm md:text-base"
                         >
                             <div className="p-1 md:p-1.5 shadow-lg">
@@ -169,7 +181,18 @@ const page = async ({ params }: CompanionSessionPageProps) => {
                     <div className="relative">
                         <div className="absolute -inset-1 bg-gradient-to-r from-blue-500/20 via-purple-500/20 to-pink-500/20 rounded-2xl md:rounded-3xl blur-xl opacity-20"></div>
                         <div className="relative backdrop-blur-xl bg-white/5 border border-white/20 rounded-2xl md:rounded-3xl p-4 sm:p-6 md:p-10 overflow-hidden shadow-2xl">
-                            <CompanionComponent {...coach} companionId={id} userName={user.firstName} userImage={user.imageUrl}/>
+                            {/* UPDATED: Pass all required props including the new sessionAlreadyCreated */}
+                            <CompanionComponent 
+                                companionId={id}
+                                subject={subject}
+                                topic={topic}
+                                name={name}
+                                userName={user.firstName || 'User'}
+                                userImage={user.imageUrl || '/default-avatar.png'}
+                                voice={voice}
+                                style={style}
+                                sessionAlreadyCreated={sessionCreated}
+                            />
                         </div>
                     </div>
                 </div>

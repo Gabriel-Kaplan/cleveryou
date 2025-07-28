@@ -2,75 +2,80 @@ import CompanionCard from "@/components/CompanionCard"
 import CompanionsList from "@/components/CompanionsList"
 import CTA from "@/components/CTA"
 import HeroSection from "@/components/HeroSection"
-import StatsSection from "@/components/StatsSection"
+//import StatsSection from "@/components/StatsSection"
 import SubjectsSection from "@/components/SubjectsSection"
 import HowItWorks from "@/components/HowItWorks"
 import FooterCTA from "@/components/FooterCTA"
 import Footer from "@/components/Footer"
-import { recentSessions } from "@/constants"
+import PricingPreview from "@/components/PricingPreview"
+//import { recentSessions } from "@/constants"
+import {getAllCompanions, getRecentSessions} from "@/lib/actions/companion.actions";
+import {getSubjectColor} from "@/lib/utils";
 
-const Page = () => {
+const Page = async () => {
+  const companions = await getAllCompanions({ limit: 3 });
+  const recentSessionsCompanions = await getRecentSessions(10);
   return (
     <main className="mb-8">
       {/* Background decoration */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl"></div>
         <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-pink-500/10 rounded-full blur-3xl"></div>
+        
+        {/* Shooting Stars */}
+        <div className="shooting-stars">
+          <div className="star star-1"></div>
+          <div className="star star-2"></div>
+          <div className="star star-3"></div>
+          <div className="star star-4"></div>
+          <div className="star star-5"></div>
+        </div>
       </div>
-      {/* Hero Section */}
+
+      {/* 1. HOOK: Capture attention immediately */}
       <HeroSection />
       
-      {/* Stats Section */}
-      <StatsSection />
+      {/* 2. CREDIBILITY: Build trust with social proof 
+      <StatsSection />*/}
       
-      {/* Popular Coaches */}
+      {/* 3. PROOF OF CONCEPT: Show the product in action */}
       <h1>Trending CleverCoaches</h1>
       <section className="home-section">
-      <CompanionCard
-    id="1"
-    name="Neura the Brainy Explorer"
-    topic="Neural Network of the Brain"
-    subject="science"
-    duration={45}
-    color="#7C4DFF" // Warmer orange-yellow for brain science
-/>
-<CompanionCard
-    id="2"
-    name="Countsy the Number Wizard"
-    topic="Derivatives & Integrals"
-    subject="maths"
-    duration={30}
-    color="#FF6B35" // Softer purple-blue for math
-/>
-<CompanionCard
-    id="3"
-    name="Verba the Vocabulary Builder"
-    topic="English Literature"
-    subject="language"
-    duration={30}
-    color="#3D5AF1" // Mint turquoise for language
-/>
+       {companions.map((companion) => (
+                <CompanionCard
+                    key={companion.id}
+                    {...companion}
+                    color={getSubjectColor(companion.subject)}
+                />
+            ))}
       </section>
       
-      {/* Recent Sessions & CTA */}
+      {/* 4. SOCIAL PROOF: Recent activity shows others are using it */}
       <section className="home-section">
-        <CompanionsList 
-            title="Recently Completed Sessions"
-            companions={recentSessions}
-            classNames="w-2/3 max-lg:w-full"/>
+        <CompanionsList
+                title="Recently completed sessions"
+                companions={recentSessionsCompanions}
+                classNames="w-2/3 max-lg:w-full"
+            />
+        {/* First CTA after showing product value */}
         <CTA/>
       </section>
       
-      {/* Subject Categories */}
+      {/* 5. EXPLORATION: Show breadth of offerings */}
       <SubjectsSection />
-      
-      {/* How It Works */}
+
+      {/* 6. EDUCATION: Reduce friction by explaining the process */}
       <HowItWorks />
 
-      {/* Footer CTA */}
+
+
+      {/* 7. COMMITMENT: Pricing comes after value is established */}
+      <PricingPreview />
+      
+      {/* 8. FINAL PUSH: Last chance to convert */}
       <FooterCTA />
 
-      {/* Footer */}
+      {/* 9. TRUST & SUPPORT: Footer with additional info */}
       <Footer/>
     </main>
   )

@@ -2,6 +2,7 @@ import {cn, getSubjectColor} from "@/lib/utils";
 import Link from "next/link";
 import Image from "next/image";
 
+
 interface CompanionsListProps {
     title: string;
     companions?: Companion[];
@@ -18,7 +19,7 @@ const CompanionsList = ({ title, companions, classNames }: CompanionsListProps) 
 
             <div className="space-y-6">
                 {companions?.map(({id, subject, name, topic, duration}) => (
-                    <Link key={id} href={`/companions/${id}`} className="block group">
+                    <Link key={id} href={`/coaches/${id}`} className="block group">
                         <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 p-6 hover:shadow-lg hover:shadow-gray-100 dark:hover:shadow-gray-900/20 transition-all duration-300 hover:border-gray-300 dark:hover:border-gray-600 hover:-translate-y-0.5">
                             <div className="flex items-center justify-between gap-4">
                                 {/* Left Section: Icon + Content */}
@@ -110,7 +111,7 @@ const CompanionsList = ({ title, companions, classNames }: CompanionsListProps) 
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
                         </svg>
                     </div>
-                    <h3 className="text-lg font-medium text-gray-900 dark:text-gray-100 mb-2">No companions available</h3>
+                    <h3 className="text-lg font-medium text-gray-900 dark:text-gray-100 mb-2">No CleverCoaches available</h3>
                     <p className="text-gray-500 dark:text-gray-400">Check back later for new learning companions.</p>
                 </div>
             )}

@@ -113,7 +113,7 @@ export default function SignInPage() {
       </div>
       
       {/* Logo/Brand section */}
-      <div className="relative z-10">
+      <div className="relative z-10 pt-10">
         <div className="relative z-10 pt-12 pb-8">
         <div className="flex flex-col items-center justify-center gap-2.5 text-center">
             <Image src="/icons/cleveryoulogo.png" alt="CleverYou Logo" width={36} height={36} />

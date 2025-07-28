@@ -77,7 +77,7 @@ const CompanionCard = ({
       </div>
 
       {/* Launch button */}
-      <Link href={`/companions/${id}`} className="w-full relative">
+      <Link href={`/coaches/${id}`} className="w-full relative">
         <button className="btn-primary w-full justify-center bg-white/20 backdrop-blur-sm hover:bg-white/30 border border-white/30 hover:border-white/50 text-white font-semibold py-3 px-6 rounded-xl transition-all duration-200 hover:scale-[1.02] active:scale-[0.98] shadow-lg hover:shadow-xl">
           <span className="flex items-center justify-center gap-2">
             Launch Lesson

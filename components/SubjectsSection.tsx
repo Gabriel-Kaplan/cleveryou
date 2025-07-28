@@ -1,21 +1,21 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 
 import React from "react"
 import Link from "next/link"
-import { ArrowRight, Users, Sparkles, BookOpen } from "lucide-react"
+import { ArrowRight, Sparkles, BookOpen } from "lucide-react"
 
 
 interface SubjectCardProps {
   icon: string;
   title: string;
-  count: string;
   gradient?: string;
   delay?: number;
 }
 
-const SubjectCard: React.FC<SubjectCardProps> = ({ icon, title, count, gradient = "from-emerald-400 to-teal-400", delay = 0 }) => {
+const SubjectCard: React.FC<SubjectCardProps> = ({ icon, title, gradient = "from-emerald-400 to-teal-400", delay = 0 }) => {
   return (
-    <Link href="/companions">
+    <Link href="/coaches">
       <div 
         className={`group relative bg-slate-800/50 backdrop-blur-sm border border-slate-700/30 rounded-2xl p-6 hover:border-slate-600/50 transition-all duration-500 md:hover:scale-105 cursor-pointer overflow-hidden animate-fade-in-up`}
         style={{ animationDelay: `${delay}ms` }}
@@ -49,10 +49,7 @@ const SubjectCard: React.FC<SubjectCardProps> = ({ icon, title, count, gradient 
               {title}
             </h3>
             
-            <div className="flex items-center gap-2 text-slate-400 md:group-hover:text-slate-300 transition-colors duration-300 justify-center md:justify-start">
-              <Users className="w-4 h-4" />
-              <span className="text-sm font-medium">{count}</span>
-            </div>
+            
 
             {/* Explore text - always visible on mobile, hover on desktop */}
             <div className="flex items-center gap-2 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-all duration-300 transform translate-x-0 md:translate-x-2 md:group-hover:translate-x-0 justify-center md:justify-start">
@@ -157,7 +154,7 @@ const SubjectsSection: React.FC = () => {
             key={index}
             icon={subject.icon}
             title={subject.title}
-            count={subject.count}
+            
             gradient={subject.gradient}
             delay={index * 100}
           />

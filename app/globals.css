@@ -89,7 +89,7 @@ body {
 }
 
 .dark {
-  --background: #070c15;
+  --background: #03000c;
   --foreground: oklch(0.95 0 0);
   --card: oklch(0.25 0 0);
   --card-foreground: oklch(0.95 0 0);
@@ -431,6 +431,9 @@ body {
   @apply shadow-lg shadow-cyan-500/30 hover:shadow-xl hover:shadow-cyan-500/50;
   @apply transition-all duration-300 hover:scale-105;
 }
+
+
+
 }
 
 @layer utilities {
