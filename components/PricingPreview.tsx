@@ -90,13 +90,13 @@ const PricingPreview = () => {
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="text-center mb-16">
           <div className="flex items-center justify-center gap-3 mb-6">
-            <Zap className="w-8 h-8 text-blue-400" />
-            <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
+            <Zap className="w-8 h-8 text-blue-600" />
+            <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
               Simple, Clever Pricing
             </h1>
-            <Zap className="w-8 h-8 text-pink-400" />
+            <Zap className="w-8 h-8 text-pink-600" />
           </div>
-          <p className="text-xl text-gray-200 max-w-3xl mx-auto mb-8">
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
             Start your learning journey for free, then upgrade as you grow.
           </p>
           
@@ -108,28 +108,28 @@ const PricingPreview = () => {
             </button>
           </Link>
           
-          {/* Billing Toggle - Glassmorphic */}
+          {/* Billing Toggle - Light Theme */}
           <div className="flex items-center justify-center gap-4 mb-8">
-            <span className={`text-sm font-medium ${!isAnnual ? 'text-white' : 'text-gray-300'}`}>
+            <span className={`text-sm font-medium ${!isAnnual ? 'text-gray-800' : 'text-gray-500'}`}>
               Monthly
             </span>
             <button
               onClick={() => setIsAnnual(!isAnnual)}
-              className={`relative w-14 h-7 rounded-full backdrop-blur-md border border-white/20 transition-all duration-300 ${
-                isAnnual ? 'bg-gradient-to-r from-purple-600/60 to-pink-600/60' : 'bg-white/10'
+              className={`relative w-14 h-7 rounded-full border-2 transition-all duration-300 ${
+                isAnnual ? 'bg-gradient-to-r from-purple-600 to-pink-600 border-purple-600' : 'bg-gray-200 border-gray-300'
               }`}
             >
               <div
-                className={`absolute top-1 w-5 h-5 bg-white rounded-full transition-transform duration-300 shadow-lg ${
-                  isAnnual ? 'translate-x-8' : 'translate-x-1'
+                className={`absolute top-0.5 w-5 h-5 bg-white rounded-full transition-transform duration-300 shadow-md ${
+                  isAnnual ? 'translate-x-7' : 'translate-x-0.5'
                 }`}
               />
             </button>
-            <span className={`text-sm font-medium ${isAnnual ? 'text-white' : 'text-gray-300'}`}>
+            <span className={`text-sm font-medium ${isAnnual ? 'text-gray-800' : 'text-gray-500'}`}>
               Annual
             </span>
             {isAnnual && (
-              <span className="ml-2 px-2 py-1 bg-green-400/20 backdrop-blur-md border border-green-400/30 text-green-200 text-xs font-semibold rounded-full">
+              <span className="ml-2 px-2 py-1 bg-green-100 border border-green-200 text-green-700 text-xs font-semibold rounded-full">
                 Save up to 38%
               </span>
             )}
@@ -143,16 +143,16 @@ const PricingPreview = () => {
                 key={index}
                 className={`relative rounded-2xl p-8 transition-all duration-300 hover:-translate-y-2 group ${
                   plan.popular 
-                    ? 'bg-gradient-to-br from-white/25 to-white/10 backdrop-blur-xl border border-white/30 shadow-2xl shadow-purple-500/25 scale-105' 
-                    : 'bg-white/10 backdrop-blur-xl border border-white/20 hover:bg-white/15 hover:border-white/30 hover:shadow-xl hover:shadow-white/10'
+                    ? 'bg-white border-2 border-purple-200 shadow-2xl shadow-purple-100 scale-105' 
+                    : 'bg-white/90 border border-gray-200 hover:bg-white hover:border-gray-300 hover:shadow-xl hover:shadow-gray-100'
                 }`}
               >
-                {/* Glassmorphic inner glow effect */}
-                <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-white/5 to-transparent pointer-events-none"></div>
+                {/* Light theme inner highlight */}
+                <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-gray-50/50 to-transparent pointer-events-none"></div>
                 
                 {plan.popular && (
                   <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                    <div className="flex items-center gap-1 bg-yellow-400/90 backdrop-blur-md border border-yellow-300/50 text-yellow-900 px-3 py-1 rounded-full text-sm font-semibold shadow-lg">
+                    <div className="flex items-center gap-1 bg-yellow-400 border border-yellow-300 text-yellow-900 px-3 py-1 rounded-full text-sm font-semibold shadow-lg">
                       <Star className="w-4 h-4" />
                       Most Popular
                     </div>
@@ -160,14 +160,14 @@ const PricingPreview = () => {
                 )}
 
                 <div className="text-center mb-8 relative z-10">
-                  <h3 className="text-2xl font-bold mb-2 text-white">
+                  <h3 className="text-2xl font-bold mb-2 text-gray-800">
                     {plan.name}
                   </h3>
                   <div className="flex items-baseline justify-center gap-1 mb-2">
-                    <span className="text-5xl font-bold transition-all duration-500 ease-in-out text-white">
+                    <span className="text-5xl font-bold transition-all duration-500 ease-in-out text-gray-900">
                       {getCurrentPrice(plan)}
                     </span>
-                    <span className="text-lg text-gray-200">
+                    <span className="text-lg text-gray-600">
                       {plan.period}
                     </span>
                   </div>
@@ -179,10 +179,10 @@ const PricingPreview = () => {
                         ? 'opacity-100 translate-y-0' 
                         : 'opacity-0 translate-y-2'
                     }`}>
-                      <span className="text-sm line-through text-gray-300">
+                      <span className="text-sm line-through text-gray-500">
                         {plan.priceMonthly}/month
                       </span>
-                      <span className="ml-2 text-sm font-semibold text-green-300">
+                      <span className="ml-2 text-sm font-semibold text-green-600">
                         {getSavingsText(plan)}
                       </span>
                     </div>
@@ -194,12 +194,12 @@ const PricingPreview = () => {
                       plan.name !== "Curious" && isAnnual 
                         ? 'opacity-100 translate-y-0' 
                         : 'opacity-0 translate-y-2'
-                    } text-gray-300`}>
+                    } text-gray-500`}>
                       Billed annually
                     </p>
                   </div>
                   
-                  <p className="text-gray-200">
+                  <p className="text-gray-600">
                     {plan.description}
                   </p>
                 </div>
@@ -207,8 +207,8 @@ const PricingPreview = () => {
                 <ul className="space-y-4 mb-8 relative z-10">
                   {plan.features.map((feature, featureIndex) => (
                     <li key={featureIndex} className="flex items-center gap-3">
-                      <Check className="w-5 h-5 flex-shrink-0 text-green-400" />
-                      <span className="text-gray-200">
+                      <Check className="w-5 h-5 flex-shrink-0 text-green-500" />
+                      <span className="text-gray-700">
                         {feature}
                       </span>
                     </li>
@@ -220,10 +220,10 @@ const PricingPreview = () => {
         </div>
 
         <div className="text-center">
-          <p className="text-sm text-gray-300 mb-4">
+          <p className="text-sm text-gray-500 mb-4">
             * Annual plans are billed once per year. Monthly plans are billed monthly.
           </p>
-          <p className="text-sm text-blue-300 font-medium">
+          <p className="text-sm text-blue-600 font-medium">
             💡 Sign Up and start with the free Curious plan - no credit card required!
           </p>
         </div>

@@ -48,37 +48,37 @@ const SearchInput = () => {
       {/* Glassmorphism container with gradient border */}
       <div className={`
         relative overflow-hidden rounded-2xl 
-        bg-gradient-to-r from-slate-900/80 via-slate-800/80 to-slate-900/80 
+        bg-gradient-to-r from-white/90 via-gray-50/90 to-white/90 
         backdrop-blur-xl border transition-all duration-300 ease-out
         ${isFocused 
           ? 'border-purple-400/60 shadow-2xl shadow-purple-500/25 scale-[1.02]' 
-          : 'border-slate-600/40 shadow-lg shadow-black/20'
+          : 'border-gray-300/60 shadow-lg shadow-gray-500/10'
         }
       `}>
         {/* Animated gradient background */}
         <div className={`
-          absolute inset-0 opacity-30 transition-opacity duration-500
-          bg-gradient-to-r from-purple-600/20 via-pink-600/20 to-blue-600/20
+          absolute inset-0 opacity-20 transition-opacity duration-500
+          bg-gradient-to-r from-purple-600/10 via-pink-600/10 to-blue-600/10
           ${isFocused ? 'animate-pulse' : ''}
         `}></div>
         
         {/* Subtle inner glow */}
-        <div className="absolute inset-0 bg-gradient-to-b from-white/5 to-transparent"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-white/80 to-transparent"></div>
         
         {/* Main content */}
         <div className="relative flex items-center gap-3 px-6 py-4">
           {/* Search icon with animation */}
           <div className={`
             flex-shrink-0 transition-all duration-300 ease-out
-            ${isFocused ? 'scale-110 text-purple-400' : 'text-slate-400'}
+            ${isFocused ? 'scale-110 text-purple-600' : 'text-gray-500'}
           `}>
             <Image 
               src="/icons/search.svg" 
               alt="search" 
               width={20} 
               height={20}
-              className={`transition-all duration-300 filter brightness-0 invert ${
-                isFocused ? 'brightness-125 drop-shadow-sm' : ''
+              className={`transition-all duration-300 filter ${
+                isFocused ? 'brightness-75 drop-shadow-sm' : 'brightness-50'
               }`}
             />
           </div>
@@ -87,9 +87,9 @@ const SearchInput = () => {
           <input
             placeholder="Search companions..."
             className={`
-              flex-1 outline-none bg-transparent text-slate-100 placeholder-slate-400
+              flex-1 outline-none bg-transparent text-gray-800 placeholder-gray-500
               text-base font-medium transition-all duration-300
-              ${isFocused ? 'placeholder-slate-300' : ''}
+              ${isFocused ? 'placeholder-gray-400' : ''}
             `}
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
@@ -102,10 +102,10 @@ const SearchInput = () => {
             <button
               onClick={clearSearch}
               className="
-                flex-shrink-0 p-1 rounded-full bg-slate-700/60 hover:bg-slate-600/80
-                text-slate-300 hover:text-white transition-all duration-200 ease-out
+                flex-shrink-0 p-1 rounded-full bg-gray-200/80 hover:bg-gray-300/80
+                text-gray-600 hover:text-gray-800 transition-all duration-200 ease-out
                 hover:scale-110 active:scale-95
-                backdrop-blur-sm border border-slate-600/30 hover:border-slate-500/50
+                backdrop-blur-sm border border-gray-300/50 hover:border-gray-400/60
               "
             >
               <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
@@ -125,7 +125,7 @@ const SearchInput = () => {
 
       {/* Search suggestions indicator */}
       {searchQuery && (
-        <div className="absolute top-full left-0 right-0 mt-2 text-xs text-slate-400 text-center animate-fade-in">
+        <div className="absolute top-full left-0 right-0 mt-2 text-xs text-gray-500 text-center animate-fade-in">
           Searching for &quot;{searchQuery}&quot;...
         </div>
       )}

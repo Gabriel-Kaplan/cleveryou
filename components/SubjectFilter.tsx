@@ -38,13 +38,13 @@ const SubjectFilter = () => {
 
     return (
         <Select onValueChange={setSubject} value={subject}>
-            <SelectTrigger className="w-48 h-9 text-sm hover:border-slate-800 focus:border-slate-500 rounded-md">
+            <SelectTrigger className="w-48 h-9 text-sm hover:border-gray-400 focus:border-purple-500 rounded-md border-gray-300 bg-white text-gray-900">
                 <SelectValue placeholder="Filter by subject" />
             </SelectTrigger>
-            <SelectContent className="min-w-48 bg-black/70 shadow-md rounded-md">
+            <SelectContent className="min-w-48 bg-white/95 backdrop-blur-sm shadow-lg rounded-md border border-gray-200">
                 <SelectItem 
                     value="all" 
-                    className="text-sm !hover:bg-purple-500 hover:!bg-purple-500 data-[highlighted]:bg-purple-500 data-[highlighted]:text-white hover:text-white px-3 py-2 cursor-pointer"
+                    className="text-sm text-gray-800 hover:bg-purple-100 data-[highlighted]:bg-purple-100 data-[highlighted]:text-purple-800 hover:text-purple-800 px-3 py-2 cursor-pointer transition-colors duration-150"
                 >
                     All subjects
                 </SelectItem>
@@ -52,7 +52,7 @@ const SubjectFilter = () => {
                     <SelectItem 
                         key={subject} 
                         value={subject} 
-                        className="capitalize text-sm !hover:bg-purple-500 hover:!bg-purple-500 data-[highlighted]:bg-purple-500 data-[highlighted]:text-white hover:text-white px-3 py-2 cursor-pointer"
+                        className="capitalize text-sm text-gray-800 hover:bg-purple-100 data-[highlighted]:bg-purple-100 data-[highlighted]:text-purple-800 hover:text-purple-800 px-3 py-2 cursor-pointer transition-colors duration-150"
                     >
                         {subject}
                     </SelectItem>

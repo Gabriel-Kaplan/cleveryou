@@ -71,13 +71,13 @@ const FAQ = () => {
   };
 
   return (
-    <div className="min-h-screen bg-transparent pt-30 p-8 overflow-hidden relative">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-gray-50 pt-30 p-8 overflow-hidden relative">
       {/* Floating Particles - Only render after client mount */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         {particles.map((particle) => (
           <motion.div
             key={particle.id}
-            className="absolute w-1 h-1 bg-white/20 rounded-full"
+            className="absolute w-1 h-1 bg-slate-400/30 rounded-full"
             animate={{
               y: [-20, -100],
               opacity: [0, 1, 0],
@@ -95,6 +95,12 @@ const FAQ = () => {
         ))}
       </div>
 
+      {/* Background decoration */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-purple-200/20 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-pink-200/20 rounded-full blur-3xl"></div>
+      </div>
+
       <div className="max-w-4xl mx-auto relative z-10">
         {/* Header */}
         <motion.div 
@@ -104,14 +110,14 @@ const FAQ = () => {
           transition={{ duration: 0.8 }}
         >
           {/* Breadcrumb/Category */}
-            <div className="flex items-center justify-center gap-2 text-sm">
-              <span className="text-slate-500">CleverYou</span>
-              <div className="h-1 w-1 bg-slate-600 rounded-full"></div>
-              <span className="text-purple-400 font-medium">FAQS</span>
-            </div>
+          <div className="flex items-center justify-center gap-2 text-sm">
+            <span className="text-slate-500">CleverYou</span>
+            <div className="h-1 w-1 bg-slate-400 rounded-full"></div>
+            <span className="text-purple-600 font-medium">FAQS</span>
+          </div>
               
           <motion.h1 
-            className="text-6xl font-bold bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent leading-tight"
+            className="text-6xl font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent leading-tight"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
@@ -122,7 +128,7 @@ const FAQ = () => {
           </motion.h1>
           
           <motion.p 
-            className="text-xl text-white/70 max-w-2xl mx-auto leading-relaxed"
+            className="text-xl text-slate-600 max-w-2xl mx-auto leading-relaxed"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
@@ -140,7 +146,7 @@ const FAQ = () => {
             return (
               <motion.div
                 key={item.id}
-                className="group relative overflow-hidden rounded-2xl bg-white/5 backdrop-blur-xl border border-white/10 hover:border-white/20 transition-all duration-500 hover:bg-white/10"
+                className="group relative overflow-hidden rounded-2xl bg-white/80 backdrop-blur-sm border border-slate-200/60 hover:border-slate-300/60 transition-all duration-500 hover:bg-white/90 shadow-lg hover:shadow-xl"
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
@@ -148,9 +154,9 @@ const FAQ = () => {
               >
                 {/* Hover Glow Effect */}
                 <motion.div 
-                  className="absolute inset-0 bg-gradient-to-r from-blue-500/0 via-purple-500/0 to-pink-500/0"
+                  className="absolute inset-0 bg-gradient-to-r from-blue-50/0 via-purple-50/0 to-pink-50/0"
                   whileHover={{
-                    background: "linear-gradient(to right, rgba(59, 130, 246, 0.1), rgba(168, 85, 247, 0.1), rgba(244, 114, 182, 0.1))"
+                    background: "linear-gradient(to right, rgba(59, 130, 246, 0.05), rgba(168, 85, 247, 0.05), rgba(244, 114, 182, 0.05))"
                   }}
                   transition={{ duration: 0.3 }}
                 />
@@ -163,13 +169,13 @@ const FAQ = () => {
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-6">
                       <motion.div 
-                        className="flex-shrink-0 w-14 h-14 bg-white/5 backdrop-blur-xl border border-white/20 rounded-xl flex items-center justify-center"
+                        className="flex-shrink-0 w-14 h-14 bg-slate-50 backdrop-blur-sm border border-slate-200 rounded-xl flex items-center justify-center shadow-sm"
                         whileHover={{ scale: 1.1, rotate: 5 }}
                         transition={{ type: "spring", stiffness: 400, damping: 10 }}
                       >
-                        <IconComponent className="w-7 h-7 text-blue-400" />
+                        <IconComponent className="w-7 h-7 text-blue-600" />
                       </motion.div>
-                      <h3 className="text-xl font-semibold text-white group-hover:text-blue-300 transition-colors duration-300">
+                      <h3 className="text-xl font-semibold text-slate-800 group-hover:text-blue-700 transition-colors duration-300">
                         {item.question}
                       </h3>
                     </div>
@@ -178,7 +184,7 @@ const FAQ = () => {
                       animate={{ rotate: isOpen ? 180 : 0 }}
                       transition={{ duration: 0.3 }}
                     >
-                      <ChevronDown className="w-6 h-6 text-white group-hover:text-white transition-colors duration-300" />
+                      <ChevronDown className="w-6 h-6 text-slate-600 group-hover:text-slate-800 transition-colors duration-300" />
                     </motion.div>
                   </div>
                   
@@ -197,7 +203,7 @@ const FAQ = () => {
                           animate={{ y: 0 }}
                           transition={{ delay: 0.1 }}
                         >
-                          <p className="text-white/80 leading-relaxed text-lg">
+                          <p className="text-slate-600 leading-relaxed text-lg">
                             {item.answer}
                           </p>
                         </motion.div>
@@ -218,16 +224,16 @@ const FAQ = () => {
           transition={{ duration: 0.8, delay: 0.8 }}
         >
           <motion.div 
-            className="inline-flex flex-col items-center gap-6 p-10 rounded-3xl bg-white/10 backdrop-blur-xl border border-white/20"
+            className="inline-flex flex-col items-center gap-6 p-10 rounded-3xl bg-white/80 backdrop-blur-sm border border-slate-200/60 shadow-xl"
             whileHover={{ scale: 1.05 }}
             transition={{ type: "spring", stiffness: 300, damping: 20 }}
           >
-            <h3 className="text-2xl font-bold text-white">Still have questions?</h3>
-            <p className="text-white/70 max-w-md">
+            <h3 className="text-2xl font-bold text-slate-800">Still have questions?</h3>
+            <p className="text-slate-600 max-w-md">
               Our AI learning specialists are here to help you find the perfect solution for your organization.
             </p>
             <motion.button 
-              className="group relative px-8 py-4 bg-gradient-to-r from-blue-500 to-pink-600 rounded-xl font-semibold text-white overflow-hidden"
+              className="group relative px-8 py-4 bg-gradient-to-r from-blue-500 to-pink-600 rounded-xl font-semibold text-white overflow-hidden shadow-lg"
               whileHover={{ 
                 scale: 1.05,
                 boxShadow: "0 25px 50px -12px rgba(59, 130, 246, 0.25)"

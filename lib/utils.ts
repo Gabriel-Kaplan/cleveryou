@@ -11,15 +11,17 @@ export const getSubjectColor = (subject: string) => {
   return subjectsColors[subject as keyof typeof subjectsColors];
 };
 
-export const configureAssistant = (voice: string, style: string) => {
+export const configureAssistant = (voice: string, style: string, companionName?: string) => {
   const voiceId = voices[voice as keyof typeof voices]?.[
     style as keyof (typeof voices)[keyof typeof voices]
   ] || "sarah";
 
+  const displayName = companionName || "your AI tutor";
+
   const vapiAssistant: CreateAssistantDTO = {
-    name: "AI Tutor",
+    name: companionName || "AI Tutor",
     firstMessage:
-        "Hello! I'm your AI tutor, and I'm here to help you learn {{topic}}. Let's begin our session.",
+        `Hello! I'm ${displayName}, and I'm here to help you learn {{topic}}. Let's begin our session.`,
     transcriber: {
       provider: "deepgram",
       model: "nova-3",
@@ -89,8 +91,8 @@ Your role is to facilitate effective learning through structured, professional t
         },
       ],
     },
-    clientMessages: [],
-    serverMessages: [],
+    clientMessages: undefined,
+    serverMessages: undefined,
   };
   return vapiAssistant;
 };

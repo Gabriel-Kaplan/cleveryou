@@ -41,11 +41,11 @@ const MissionSection = () => {
         {/* Header Section */}
         <div className="text-center mb-20">
           <h2 className="text-6xl md:text-7xl font-black mb-8 leading-tight">
-            <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 bg-clip-text text-transparent">
               Smarter Learning.
             </span>
             <br />
-            <span className="text-slate-900 dark:text-white">
+            <span className="bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 bg-clip-text text-transparent dark:text-white">
               Made for the Doers.
             </span>
           </h2>
@@ -64,10 +64,16 @@ const MissionSection = () => {
                 Why We Exist
               </h3>
               <p className="text-slate-600 dark:text-slate-300 leading-relaxed mb-6">
-                DTD wasn’t born in a boardroom. It started as a fire — to help real people build, grow, and break the ceilings stacked against them.
+                Dev To Defy (DTD) wasn’t born in a boardroom. It started as a fire — to help real people build, grow, and break the ceilings stacked against them. We began by creating websites that gave individuals and businesses a real online presence — and we still do.
+              </p>
+              <p className="text-slate-600 dark:text-slate-300 leading-relaxed mb-6">
+                But we believe success shouldn’t be limited by background or location. Education is one of the most essential parts of life — the foundation for freedom, opportunity, and growth.
+              </p>
+              <p className="text-slate-600 dark:text-slate-300 leading-relaxed mb-6">
+                That’s why we built <strong>CleverYou</strong> — to give every generation the power to learn what they want, how they want. Access to knowledge should never depend on where you&apos;re from, what you earn, or who you know.
               </p>
               <p className="text-slate-600 dark:text-slate-300 leading-relaxed">
-                We make tools that actually work: affordable, powerful, and built for action. No gatekeepers. No hidden costs. Just access to the stuff that moves you forward.
+                We make tools that actually work: affordable, powerful, and built for action. No gatekeepers. No hidden costs. Just access to what moves you forward. Because when people have the right tools, they don’t just adapt — they defy.
               </p>
             </div>
           </div>

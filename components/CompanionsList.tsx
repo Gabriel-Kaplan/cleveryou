@@ -2,7 +2,6 @@ import {cn, getSubjectColor} from "@/lib/utils";
 import Link from "next/link";
 import Image from "next/image";
 
-
 interface CompanionsListProps {
     title: string;
     companions?: Companion[];
@@ -10,6 +9,13 @@ interface CompanionsListProps {
 }
 
 const CompanionsList = ({ title, companions, classNames }: CompanionsListProps) => {
+    // Simple fix: Remove duplicate companions by ID
+    // This handles the case where the same companion appears multiple times due to multiple sessions
+    const uniqueCompanions = companions?.filter((companion, index, self) => 
+        companion && companion.id && 
+        index === self.findIndex(c => c?.id === companion.id)
+    ) || [];
+
     return (
         <article className={cn('companion-list', classNames)}>
             <div className="mb-8">
@@ -18,7 +24,7 @@ const CompanionsList = ({ title, companions, classNames }: CompanionsListProps) 
             </div>
 
             <div className="space-y-6">
-                {companions?.map(({id, subject, name, topic, duration}) => (
+                {uniqueCompanions.map(({id, subject, name, topic, duration}) => (
                     <Link key={id} href={`/coaches/${id}`} className="block group">
                         <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 p-6 hover:shadow-lg hover:shadow-gray-100 dark:hover:shadow-gray-900/20 transition-all duration-300 hover:border-gray-300 dark:hover:border-gray-600 hover:-translate-y-0.5">
                             <div className="flex items-center justify-between gap-4">
@@ -104,7 +110,7 @@ const CompanionsList = ({ title, companions, classNames }: CompanionsListProps) 
             </div>
 
             {/* Empty State */}
-            {(!companions || companions.length === 0) && (
+            {uniqueCompanions.length === 0 && (
                 <div className="text-center py-12">
                     <div className="inline-flex items-center justify-center w-16 h-16 bg-gray-100 dark:bg-gray-800 rounded-full mb-4">
                         <svg className="w-8 h-8 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
