@@ -143,30 +143,75 @@ export const newCompanionPermissions = async () => {
     const { userId, has } = await auth();
     const supabase = createSupabaseClient();
 
-    let limit = 0;
-
+    // Genius plan users have unlimited companions
     if(has({ plan: 'genius' })) {
         return true;
-    } else if(has({ feature: "3_active_clever_coaches" })) {
-        limit = 3;
-    } else if(has({ feature:"15_active_clever_coaches" })) {
-        limit = 15;
     }
+
+    // Determine monthly limit based on plan
+    let monthlyLimit = 0;
+    if(has({ feature: "3_active_clever_coaches" })) {
+        monthlyLimit = 3;
+    } else if(has({ feature:"15_active_clever_coaches" })) {
+        monthlyLimit = 15;
+    }
+
+    // Get the start and end of current month
+    const now = new Date();
+    const startOfMonth = new Date(now.getFullYear(), now.getMonth(), 1);
+    const endOfMonth = new Date(now.getFullYear(), now.getMonth() + 1, 0, 23, 59, 59, 999);
+
+    // Query companions created this month
+    const { data, error } = await supabase
+        .from('companions')
+        .select('id', { count: 'exact' })
+        .eq('author', userId)
+        .gte('created_at', startOfMonth.toISOString())
+        .lte('created_at', endOfMonth.toISOString());
+
+    if(error) throw new Error(error.message);
+
+    const companionsThisMonth = data?.length || 0;
+
+    // Check if user has reached their monthly limit
+    if(companionsThisMonth >= monthlyLimit) {
+        return false;
+    } else {
+        return true;
+    }
+}
+
+// Optional: Helper function to get remaining companions for the month
+export const getRemainingCompanionsThisMonth = async () => {
+    const { userId, has } = await auth();
+    const supabase = createSupabaseClient();
+
+    if(has({ plan: 'genius' })) {
+        return -1; // Unlimited
+    }
+
+    let monthlyLimit = 0;
+    if(has({ feature: "3_active_clever_coaches" })) {
+        monthlyLimit = 3;
+    } else if(has({ feature:"15_active_clever_coaches" })) {
+        monthlyLimit = 15;
+    }
+
+    const now = new Date();
+    const startOfMonth = new Date(now.getFullYear(), now.getMonth(), 1);
+    const endOfMonth = new Date(now.getFullYear(), now.getMonth() + 1, 0, 23, 59, 59, 999);
 
     const { data, error } = await supabase
         .from('companions')
         .select('id', { count: 'exact' })
         .eq('author', userId)
+        .gte('created_at', startOfMonth.toISOString())
+        .lte('created_at', endOfMonth.toISOString());
 
     if(error) throw new Error(error.message);
 
-    const companionCount = data?.length;
-
-    if(companionCount >= limit) {
-        return false
-    } else {
-        return true;
-    }
+    const companionsThisMonth = data?.length || 0;
+    return Math.max(0, monthlyLimit - companionsThisMonth);
 }
 
 // Bookmarks
