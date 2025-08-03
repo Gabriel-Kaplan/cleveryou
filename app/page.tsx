@@ -12,6 +12,9 @@ import PricingPreview from "@/components/PricingPreview"
 import {getAllCompanions, getRecentSessions} from "@/lib/actions/companion.actions";
 import {getSubjectColor} from "@/lib/utils";
 
+// Force dynamic rendering
+export const dynamic = 'force-dynamic'
+
 const Page = async () => {
   const companions = await getAllCompanions({ limit: 3 });
   const recentSessionsCompanions = await getRecentSessions(10);
@@ -68,8 +71,6 @@ const Page = async () => {
 
       {/* 6. EDUCATION: Reduce friction by explaining the process */}
       <HowItWorks />
-
-
 
       {/* 7. COMMITMENT: Pricing comes after value is established */}
       <PricingPreview />
