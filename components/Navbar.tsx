@@ -50,7 +50,7 @@ const Navbar = () => {
                 <Home className="w-5 h-5" />
                 <span>Home</span>
               </Link>
-              <Link href="/my-cleveryou" className="flex items-center gap-3 px-4 py-3 text-white/90 hover:text-white hover:bg-white/10 rounded-xl transition-all duration-300 font-medium" onClick={() => setIsMobileMenuOpen(false)}>
+              <Link href="/about" className="flex items-center gap-3 px-4 py-3 text-white/90 hover:text-white hover:bg-white/10 rounded-xl transition-all duration-300 font-medium" onClick={() => setIsMobileMenuOpen(false)}>
                 <FaPeopleGroup className="w-5 h-5" />
                 <span>About Us</span>
               </Link>
