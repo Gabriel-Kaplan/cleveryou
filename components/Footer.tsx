@@ -56,11 +56,7 @@ support: [
       { title: "Blog", href: "https://medium.com/@devtodefy" },
     ],
     legal: [
-      { title: "Privacy Policy", href: "/privacy" },
-      { title: "Terms of Service", href: "/terms" },
-      { title: "Cookie Policy", href: "/cookies" },
-      { title: "Data Protection", href: "/data-protection" },
-      { title: "License Agreement", href: "/license" }
+      { title: "Policies & Terms", href: "/legal" }
     ]
   }
 
@@ -68,7 +64,7 @@ support: [
     { icon: Bot, text: "AI-Powered Learning" },
     { icon: Shield, text: "Secure & Private" },
     { icon: Zap, text: "Lightning Fast" },
-    { icon: Star, text: "Top Rated Platform" }
+    { icon: Star, text: "Built for Learners" }
   ]
 
   return (

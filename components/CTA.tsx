@@ -63,7 +63,7 @@ const CTA = () => {
                         <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-12"></div>
                         
                         {/* Button content */}
-                        <span className="text-lg relative z-10">Create My Companion</span>
+                        <span className="text-lg relative z-10">Create Coach</span>
                         <div className="relative z-10 bg-white/20 backdrop-blur-sm rounded-lg p-1.5 group-hover:bg-white/30 transition-all duration-200">
                             <Image 
                                 src="/icons/plus.svg" 

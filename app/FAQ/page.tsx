@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronDown, Brain, Users, Shield, Zap, BookOpen, BarChart3 } from 'lucide-react';
+import Link from 'next/link';
 
 interface Particle {
   id: number;
@@ -71,7 +72,7 @@ const FAQ = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-gray-50 pt-30 p-8 overflow-hidden relative">
+    <div className="min-h-screen bg-none pt-30 p-8 overflow-hidden relative">
       {/* Floating Particles - Only render after client mount */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         {particles.map((particle) => (
@@ -230,10 +231,11 @@ const FAQ = () => {
           >
             <h3 className="text-2xl font-bold text-slate-800">Still have questions?</h3>
             <p className="text-slate-600 max-w-md">
-              Our AI learning specialists are here to help you find the perfect solution for your organization.
+              Our team is here to help you find the perfect solution for you.
             </p>
+            <Link href={`mailto:contact@devtodefy.com?subject=CleverYou FAQ Question&body=Hello CleverYou Team,%0D%0A%0D%0AI have a question about CleverYou.%0D%0A%0D%0ACategory: [General / Features / Account / Other]%0D%0AMy question: [Please describe what you'd like to know]%0D%0AAdditional context: [Any relevant details that might help with your answer]%0D%0A%0D%0AThank you!%0D%0A%0D%0ABest regards,`}>
             <motion.button 
-              className="group relative px-8 py-4 bg-gradient-to-r from-blue-500 to-pink-600 rounded-xl font-semibold text-white overflow-hidden shadow-lg"
+              className="group relative px-8 py-4 bg-none rounded-xl font-semibold text-black border-2 border-slate-400 overflow-hidden shadow-lg cursor-pointer"
               whileHover={{ 
                 scale: 1.05,
                 boxShadow: "0 25px 50px -12px rgba(59, 130, 246, 0.25)"
@@ -241,7 +243,9 @@ const FAQ = () => {
               whileTap={{ scale: 0.95 }}
               transition={{ type: "spring", stiffness: 400, damping: 17 }}
             >
+              
               <span className="relative z-10">Get in Touch</span>
+              
               <motion.div 
                 className="absolute inset-0 bg-gradient-to-r from-purple-600 to-pink-600"
                 initial={{ opacity: 0 }}
@@ -249,6 +253,7 @@ const FAQ = () => {
                 transition={{ duration: 0.3 }}
               />
             </motion.button>
+            </Link>
           </motion.div>
         </motion.div>
       </div>

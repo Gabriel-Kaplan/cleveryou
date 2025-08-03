@@ -86,14 +86,14 @@ const CleverYouDocs = () => {
           content: `Your AI assistant is the heart of your CleverYou experience. Navigate to the Assistant Setup page and choose your preferred personality, voice, and subject expertise. The AI will adapt to your learning patterns and provide personalized guidance throughout your educational journey.`,
           icon: MessageSquare,
           steps: [
-            'Click "Create Assistant" from your dashboard',
+            'Click "Create Coach" from your dashboard, the CleverCoach library or home page',
             'Select your preferred voice and personality',
             'Choose your primary subjects of interest',
             'Customize interaction preferences',
-            'Save and start your first conversation'
+            'The click "Build Your CleverCoach" and start your first conversation'
           ]
         },
-        {
+        /*{
           title: 'Starting Learning Sessions',
           content: `Learning sessions are interactive experiences where you engage with your AI assistant on specific topics. Sessions can include quizzes, discussions, practice problems, and real-time feedback.`,
           icon: Play,
@@ -104,7 +104,7 @@ const CleverYouDocs = () => {
             'Begin interacting with your AI assistant',
             'Track progress and earn achievements'
           ]
-        }
+        }*/
       ]
     },
     'features': {
@@ -112,7 +112,7 @@ const CleverYouDocs = () => {
       items: [
         {
           title: 'Progress Tracking & Achievements',
-          content: `CleverYou gamifies your learning experience with comprehensive progress tracking, badges, and achievements. Monitor your learning streaks, subject mastery levels, and unlock special rewards as you advance.`,
+          content: `CleverYou gamifies your learning experience with comprehensive progress tracking, badges, and achievements. Monitor your learning streaks, subject mastery levels, and unlock special rewards as you advance. (Please Note: These features are currently in development and will be available soon.)`,
           icon: Trophy,
           features: [
             'Learning streaks and consistency tracking',
@@ -123,41 +123,44 @@ const CleverYouDocs = () => {
           ]
         },
         {
-          title: 'Personalizing Your Assistant',
-          content: `Customize your AI assistant's personality, voice, teaching style, and subject expertise to match your learning preferences. Your assistant learns from your interactions and becomes more effective over time.`,
+          title: 'Build Your Perfect AI Learning Companion',
+          content: `Create a personalized AI coach tailored to your unique learning style and goals. Customize everything from communication approach to subject expertise, and watch your assistant adapt and improve throughout each lesson to maximize your learning potential.`,
           icon: Settings,
           features: [
-            'Voice selection and accent preferences',
-            'Personality traits and communication style',
-            'Subject matter expertise levels',
-            'Response length and complexity',
-            'Learning pace and difficulty adjustment'
+            'Voice personality selection (Male/Female with distinct characteristics)',
+            'Communication style adaptation (Formal, Casual, with Encouraging and Direct modes coming soon)',
+            'Subject matter specialization across 6+ domains (Math, Languages, Science, History, Coding, Economics)',
+            'Dynamic lesson structure - length and complexity automatically adjust based on your description and progress',
+            'Real-time learning pace optimization - difficulty scales up or down during lessons based on your responses',
+            'Session memory - your coach remembers your preferences and progress patterns within each lesson'
           ]
         },
         {
-          title: 'Managing Your Subjects',
-          content: `Organize your learning journey by adding, removing, and prioritizing subjects. Set learning goals, track progress, and receive personalized recommendations for each subject area.`,
-          icon: BookOpen,
-          features: [
-            'Add unlimited subjects and topics',
-            'Set learning goals and deadlines',
-            'Priority ranking system',
-            'Progress visualization',
-            'Recommended learning paths'
-          ]
-        },
-        {
-          title: 'Voice AI & Quick Actions',
-          content: `Experience hands-free learning with our advanced voice AI. Use quick actions like "Start Interview" to rapidly begin practice sessions, ask questions, or get explanations on complex topics.`,
-          icon: Mic,
-          features: [
-            'Voice-activated learning sessions',
-            'Quick action commands',
-            'Real-time speech recognition',
-            'Natural conversation flow',
-            'Multi-language support'
-          ]
-        }
+              title: 'Your Personal Learning Dashboard',
+              content: `Track your learning journey with comprehensive analytics and instant access to all your AI CleverCoaches. Genius plan users get detailed insights into their learning patterns, session management, and can launch new sessions with their saved companions without rebuilding them.`,
+              icon: BookOpen,
+              features: [
+                'Complete learning analytics - total sessions, companions created, daily averages, and completion rates',
+                'My Companions library - instantly access and reuse your created AI coaches',
+                'Recent Sessions tracking with quick restart functionality', 
+                'Weekly activity visualization and streak tracking (coming soon)',
+                'Learning insights dashboard with performance metrics and daily averages',
+                'Session bookmarking system for important lessons (coming soon)',
+                'Quick stats overview - this week\'s activity, completed sessions, and learning streaks'
+              ]
+            },
+              {
+        title: 'Enhanced Learning Experience',
+        content: `Enjoy seamless text-based interactions with your AI CleverCoaches through our intuitive chat interface. Create personalized learning sessions by selecting your companion, choosing your subject, and providing lesson descriptions for tailored educational experiences.`,
+        icon: Mic,
+        features: [
+          'Voice-based conversational learning with our AI CleverCoaches',
+          'Instant session creation - select companion, subject, description, voice, style and duration',
+          'Real-time adaptive responses based on your learning in conversation',
+          'Natural conversation flow',
+          'Personalized learning sessions tailored to your goals'
+        ]
+      }
       ]
     },
     'faq': {
@@ -170,56 +173,56 @@ const CleverYouDocs = () => {
           faqs: [
             {
               q: 'My AI assistant isn\'t responding properly',
-              a: 'Try refreshing your browser, checking your internet connection, or clearing your browser cache. If the issue persists, restart your learning session.'
+              a: 'Try refreshing your browser, checking your internet connection, or clearing your browser cache. If the issue persists, restart your learning session or contact our support team.'
             },
             {
               q: 'Voice recognition isn\'t working',
               a: 'Ensure your microphone permissions are enabled, check your audio input settings, and verify that your microphone is not being used by other applications.'
             },
-            {
-              q: 'Progress isn\'t being saved',
-              a: 'Make sure you\'re logged in and have a stable internet connection. Progress is automatically saved, but manual saves are recommended after important milestones.'
+           {
+              q: 'Why don\'t my conversations continue where I left off?',
+              a: 'Each session with your AI companion starts fresh, similar to ChatGPT or Claude. While your companions and session history are saved in your dashboard, the actual conversation context resets when you start a new session. This ensures optimal performance and allows you to explore different topics without previous context interfering.'
             }
           ]
         },
+       {
+  title: 'Account Management',
+  content: 'Manage your CleverYou account settings, profile information, and coach allocations across all plan tiers.',
+  icon: Users,
+  faqs: [
+    {
+      q: 'How do I update my profile information?',
+      a: 'Navigate to your profile in the navigation bar > Manage Account > Update your personal information, billing, and security settings.'
+    },
+    {
+      q: 'Can I have multiple AI coaches?',
+      a: 'Yes! The number of Clever Coaches you can create depends on your plan: Curious (free) allows 3 active coaches, Clever plan allows 15 active coaches, and Genius plan offers unlimited coaches. Each coach can be specialized for different subjects or learning styles.'
+    },
+    {
+      q: 'How do I delete my account?',
+      a: 'Account deletion can be accessed through your profile picture in the navigation bar > Manage Account > Security > Delete Account. This action is permanent and cannot be undone.'
+    }
+  ]
+},
         {
-          title: 'Account Management',
-          content: 'Managing your CleverYou account and profile settings.',
-          icon: Users,
-          faqs: [
-            {
-              q: 'How do I update my profile information?',
-              a: 'Navigate to Settings > Profile to update your personal information, learning preferences, and notification settings.'
-            },
-            {
-              q: 'Can I have multiple AI assistants?',
-              a: 'Yes! Premium users can create up to 5 different AI assistants, each specialized for different subjects or learning styles.'
-            },
-            {
-              q: 'How do I delete my account?',
-              a: 'Account deletion can be requested through Settings > Account > Delete Account. This action is permanent and cannot be undone.'
-            }
-          ]
-        },
-        {
-          title: 'Subscription & Billing',
-          content: 'Information about CleverYou subscriptions and billing through Clerk.',
-          icon: CreditCard,
-          faqs: [
-            {
-              q: 'What subscription plans are available?',
-              a: 'We offer Free, Pro, and Enterprise plans. Free includes basic features, Pro unlocks advanced AI capabilities, and Enterprise provides team management tools.'
-            },
-            {
-              q: 'How do I upgrade or downgrade my plan?',
-              a: 'Visit Settings > Subscription to manage your plan. Changes take effect at the next billing cycle, and you\'ll retain access to premium features until then.'
-            },
-            {
-              q: 'Can I get a refund?',
-              a: 'We offer a 30-day money-back guarantee for new subscribers. Contact support within 30 days of your initial subscription for a full refund.'
-            }
-          ]
-        }
+  title: 'Subscription & Billing',
+  content: 'Information about CleverYou subscriptions, billing, and plan management.',
+  icon: CreditCard,
+  faqs: [
+    {
+      q: 'What subscription plans are available?',
+      a: 'We offer three plans: Curious (free - $0/month) with 3 coaches and 10 conversations, Clever ($19.99/month) with 15 coaches and 100 conversations plus session history, and Genius ($39.99/month) with unlimited coaches, conversations, and full dashboard access.'
+    },
+    {
+      q: 'How do I upgrade or downgrade my plan?',
+      a: 'Visit your profile > Manage Account > Subscription to change your plan. Upgrades take effect immediately, while downgrades apply at your next billing cycle. You\'ll retain access to premium features until then.'
+    },
+     {
+      q: 'Can I get a refund?',
+      a: 'Currently, we do not offer refunds on subscription plans. You can cancel your subscription at any time and will retain access to premium features until the end of your current billing period.'
+    }
+  ]
+}
       ]
     },
     'privacy': {
@@ -238,17 +241,17 @@ const CleverYouDocs = () => {
           ]
         },
         {
-          title: 'AI-Generated Content Disclaimer',
-          content: `CleverYou uses advanced AI technology to provide educational content and responses. While our AI is highly sophisticated and regularly updated, users should be aware of the following important considerations.`,
-          icon: Brain,
-          disclaimers: [
-            'AI responses are generated based on training data and may not always be 100% accurate',
-            'Always verify important information from authoritative sources',
-            'AI assistants are educational tools, not replacements for human expertise',
-            'Content is generated in real-time and may vary between sessions',
-            'We continuously improve our AI models based on user feedback'
-          ]
-        },
+            title: 'AI-Generated Content Disclaimer',
+            content: `CleverYou integrates with advanced AI technology providers to deliver educational content and personalized learning experiences. While these AI systems are highly sophisticated and regularly updated, users should be aware of the following important considerations.`,
+            icon: Brain,
+            disclaimers: [
+              'AI responses are generated by third-party AI providers and may not always be 100% accurate',
+              'Always verify important information from authoritative sources',
+              'Our AI coaches are educational tools, not replacements for human expertise or professional advice - always consult qualified professionals for specialized guidance',
+              'Content is generated in real-time and may vary between sessions',
+              'CleverYou curates and personalizes AI interactions but does not control the underlying AI models'
+            ]
+          },
         {
           title: 'Security Best Practices',
           content: `Follow these security recommendations to keep your CleverYou account safe and secure.`,
@@ -633,14 +636,16 @@ const CleverYouDocs = () => {
                   Can&apos;t find what you&apos;re looking for? Our support team is here to help you get the most out of CleverYou.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
+                  <Link href = "mailto:contact@devtodefy.com?subject=CleverYou Support Inquiry&body=Hello CleverYou Team,%0D%0A%0D%0AI hope this message finds you well. I am reaching out regarding:%0D%0A%0D%0A[Please describe your inquiry or question here]%0D%0A%0D%0AThank you for your time and assistance.%0D%0A%0D%0ABest regards">
                   <button className="px-4 sm:px-6 py-3 bg-white text-blue-600 rounded-lg font-medium hover:bg-gray-100 active:bg-gray-200 transition-colors flex items-center justify-center space-x-2 touch-manipulation">
                     <MessageSquare className="w-4 h-4" />
                     <span>Contact Support</span>
                   </button>
-                  <button className="px-4 sm:px-6 py-3 bg-white/20 backdrop-blur-sm rounded-lg font-medium hover:bg-white/30 active:bg-white/40 transition-colors flex items-center justify-center space-x-2 touch-manipulation">
+                  </Link>
+                 {/* <button className="px-4 sm:px-6 py-3 bg-white/20 backdrop-blur-sm rounded-lg font-medium hover:bg-white/30 active:bg-white/40 transition-colors flex items-center justify-center space-x-2 touch-manipulation">
                     <BookOpen className="w-4 h-4" />
                     <span>View Tutorials</span>
-                  </button>
+                  </button>*/}
                 </div>
               </div>
             </div>
