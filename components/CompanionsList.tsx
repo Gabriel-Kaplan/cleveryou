@@ -93,9 +93,8 @@ const CompanionsList = ({ title, companions, classNames }: CompanionsListProps) 
                                             width={16} 
                                             height={16} 
                                             className="text-gray-500 dark:text-gray-400"
-                                             style={{
-                                            filter: 'brightness(0) invert(1)', 
-                                            }}
+                                              
+                                        
                                         />
                                         <span className="text-gray-400 dark:text-gray-200 font-medium">
                                             {duration}

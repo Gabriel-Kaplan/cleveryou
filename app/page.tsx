@@ -8,6 +8,7 @@ import HowItWorks from "@/components/HowItWorks"
 import FooterCTA from "@/components/FooterCTA"
 import Footer from "@/components/Footer"
 import PricingPreview from "@/components/PricingPreview"
+import Features from "@/components/Features"
 //import { recentSessions } from "@/constants"
 import {getAllCompanions, getRecentSessions} from "@/lib/actions/companion.actions";
 import {getSubjectColor} from "@/lib/utils";
@@ -20,25 +21,11 @@ const Page = async () => {
   const recentSessionsCompanions = await getRecentSessions(10);
   return (
     <main className="mb-8">
-      {/* Background decoration */}
-      <div className="fixed inset-0 overflow-hidden pointer-events-none">
-       
-        
-        {/* Shooting Stars */}
-        <div className="shooting-stars">
-          <div className="star star-1"></div>
-          <div className="star star-2"></div>
-          <div className="star star-3"></div>
-          <div className="star star-4"></div>
-          <div className="star star-5"></div>
-        </div>
-      </div>
-
       {/* 1. HOOK: Capture attention immediately */}
       <HeroSection />
       
-      {/* 2. CREDIBILITY: Build trust with social proof 
-      <StatsSection />*/}
+      {/* 2. CREDIBILITY: Build trust with social proof */}
+      <Features />
       
       {/* 3. PROOF OF CONCEPT: Show the product in action */}
       <div className="mb-4">
