@@ -91,8 +91,8 @@ const SubjectsSection: React.FC = () => {
       gradient: "bg-orange-500"
     },
     { 
-      icon: "/icons/language.svg", 
-      title: "Language", 
+      icon: "/icons/english.svg", 
+      title: "English", 
       count: "10+ companions",
       gradient: "bg-blue-600"
     },

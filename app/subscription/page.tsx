@@ -1,8 +1,15 @@
 "use client";
 import { PricingTable } from '@clerk/nextjs';
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 const LightGlassmorphicPricing = () => {
+  const [mounted, setMounted] = useState(false);
+
+  // Prevent hydration mismatch
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
   // Light glassmorphic appearance configuration for Clerk components
   const lightAppearance = {
     elements: {
@@ -12,7 +19,7 @@ const LightGlassmorphicPricing = () => {
       },
       // Card containers
       card: {
-        backgroundColor: "rgba(255, 255, 255, 0.85)", // Semi-transparent white
+        backgroundColor: "rgba(255, 255, 255, 0.85)",
         border: "1px solid rgba(0, 0, 0, 0.06)",
         backdropFilter: "blur(24px)",
         borderRadius: "20px",
@@ -20,20 +27,20 @@ const LightGlassmorphicPricing = () => {
         transition: "transform 0.3s ease",
       },
       cardBox__popular: {
-        backgroundColor: "rgba(255, 255, 255, 0.95)", // More opaque for popular
+        backgroundColor: "rgba(255, 255, 255, 0.95)",
         border: "2px solid rgba(139, 92, 246, 0.3)",
         transform: "scale(1.04)",
         boxShadow: "0 20px 60px rgba(139, 92, 246, 0.15)",
       },
       // Plan names
       planName: {
-        color: "#1f2937", // dark gray
+        color: "#1f2937",
         fontSize: "24px",
         fontWeight: "700",
       },
       // Plan descriptions
       planDescription: {
-        color: "rgba(55, 65, 81, 0.8)", // gray-700 with opacity
+        color: "rgba(55, 65, 81, 0.8)",
         fontSize: "16px",
       },
       // Pricing
@@ -50,7 +57,7 @@ const LightGlassmorphicPricing = () => {
       },
       // Features list
       planFeatures: {
-        color: "rgba(31, 41, 55, 0.9)", // dark gray
+        color: "rgba(31, 41, 55, 0.9)",
       },
       planFeaturesList: {
         color: "rgba(31, 41, 55, 0.9)",
@@ -65,7 +72,7 @@ const LightGlassmorphicPricing = () => {
       button: {
         background: "rgba(255, 255, 255, 0.7)",
         border: "1px solid rgba(139, 92, 246, 0.2)",
-        color: "#374151", // gray-700
+        color: "#374151",
         borderRadius: "12px",
         backdropFilter: "blur(10px)",
         transition: "all 0.3s ease",
@@ -135,7 +142,7 @@ const LightGlassmorphicPricing = () => {
     }
   };
 
-  // Checkout modal appearance to match the light theme
+  // Checkout modal appearance
   const checkoutAppearance = {
     elements: {
       modalContent: {
@@ -172,9 +179,31 @@ const LightGlassmorphicPricing = () => {
     }
   };
 
+  // Simple loading component to prevent hydration issues
+  const LoadingSkeleton = () => (
+    <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+      {[1, 2, 3].map((i) => (
+        <div key={i} className="relative">
+          <div className="absolute inset-0 backdrop-blur-xl bg-white/60 border border-gray-200/50 rounded-2xl"></div>
+          <div className="relative p-8 space-y-6">
+            <div className="h-6 w-24 bg-gray-200 rounded-lg animate-pulse"></div>
+            <div className="h-4 w-full bg-gray-200 rounded animate-pulse"></div>
+            <div className="h-8 w-20 bg-gradient-to-r from-purple-200 to-pink-200 rounded animate-pulse"></div>
+            <div className="space-y-3">
+              {[1,2,3,4].map((j) => (
+                <div key={j} className="h-3 w-32 bg-gray-200 rounded animate-pulse"></div>
+              ))}
+            </div>
+            <div className="h-12 w-full bg-gray-100 border border-gray-200 rounded-xl animate-pulse"></div>
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+
   return (
     <div className="min-h-screen py-16 px-4 relative overflow-hidden bg-none">
-      {/* Animated background elements - lighter colors */}
+      {/* Animated background elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-1/4 -left-20 w-72 h-72 bg-purple-200/20 rounded-full blur-3xl animate-pulse"></div>
         <div className="absolute top-3/4 -right-20 w-96 h-96 bg-blue-200/20 rounded-full blur-3xl animate-pulse" style={{animationDelay: '1s'}}></div>
@@ -182,11 +211,9 @@ const LightGlassmorphicPricing = () => {
       </div>
       
       <div className="max-w-7xl mx-auto pt-24 relative">
-        {/* Enhanced Header */}
+        {/* Header */}
         <div className="text-center mb-16 relative">
-          {/* Floating decoration */}
           <div className="absolute -top-8 left-1/2 transform -translate-x-1/2">
-            {/* Breadcrumb/Category */}
             <div className="flex items-center justify-center gap-2 text-sm">
               <span className="text-gray-500">CleverYou</span>
               <div className="h-1 w-1 bg-gray-400 rounded-full"></div>
@@ -194,13 +221,9 @@ const LightGlassmorphicPricing = () => {
             </div>
           </div>
           
-          {/* Main title with glassmorphic container */}
           <div className="relative inline-block">
-            {/* Glassmorphic background for title */}
-            <div className="absolute inset-0 backdrop-blur-xl transform scale-110"></div>
-            
             <h1 className="relative text-6xl md:text-7xl font-black mb-6 px-8 py-4">
-             <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
                 You Deserve to 
               </span>
               <br />
@@ -210,9 +233,7 @@ const LightGlassmorphicPricing = () => {
             </h1>
           </div>
           
-          {/* Enhanced subtitle */}
           <div className="relative max-w-3xl mx-auto">
-            <div className="absolute inset-0 backdrop-blur-lg "></div>
             <p className="relative text-xl md:text-2xl text-gray-700 leading-relaxed px-8 py-6 font-light">
               Start discovering what you&apos;re capable of. 
               <span className="bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent font-medium"> Your transformation </span>
@@ -220,186 +241,30 @@ const LightGlassmorphicPricing = () => {
             </p>
           </div>
           
-          {/* Accent line */}
           <div className="mt-8 flex justify-center">
             <div className="w-24 h-1 bg-gradient-to-r from-purple-500 via-pink-500 to-blue-500 rounded-full"></div>
           </div>
         </div>
 
-        {/* Pricing Cards with loading state */}
+        {/* Pricing Section */}
         <div className="mx-auto mb-16">
-          <div className="relative">
-            {/* Skeleton Loader - Light theme */}
-            <div className="skeleton-loader">
-              <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-                {/* Skeleton Card 1 */}
-                <div className="relative group">
-                  <div className="absolute inset-0 backdrop-blur-xl bg-white/60 border border-gray-200/50 rounded-2xl animate-pulse"></div>
-                  <div className="relative p-8 space-y-6">
-                    {/* Plan name skeleton */}
-                    <div className="space-y-2">
-                      <div className="h-6 w-24 bg-gradient-to-r from-gray-200 to-gray-100 rounded-lg animate-pulse"></div>
-                      <div className="h-3 w-16 bg-gray-200 rounded animate-pulse"></div>
-                    </div>
-                    
-                    {/* Description skeleton */}
-                    <div className="space-y-2">
-                      <div className="h-4 w-full bg-gray-200 rounded animate-pulse"></div>
-                      <div className="h-4 w-3/4 bg-gray-200 rounded animate-pulse" style={{animationDelay: '0.1s'}}></div>
-                    </div>
-                    
-                    {/* Price skeleton */}
-                    <div className="space-y-1">
-                      <div className="h-8 w-20 bg-gradient-to-r from-purple-200 to-pink-200 rounded animate-pulse"></div>
-                      <div className="h-3 w-12 bg-gray-200 rounded animate-pulse"></div>
-                    </div>
-                    
-                    {/* Features skeleton */}
-                    <div className="space-y-3">
-                      {[1,2,3,4].map((i) => (
-                        <div key={i} className="flex items-center space-x-2">
-                          <div className="h-2 w-2 bg-gray-300 rounded-full animate-pulse" style={{animationDelay: `${i * 0.1}s`}}></div>
-                          <div className="h-3 w-32 bg-gray-200 rounded animate-pulse" style={{animationDelay: `${i * 0.1}s`}}></div>
-                        </div>
-                      ))}
-                    </div>
-                    
-                    {/* Button skeleton */}
-                    <div className="h-12 w-full bg-gradient-to-r from-gray-100 to-gray-50 border border-gray-200 rounded-xl animate-pulse"></div>
-                  </div>
-                </div>
-
-                {/* Skeleton Card 2 - Featured/Popular */}
-                <div className="relative group scale-105">
-                  {/* Popular badge skeleton */}
-                  <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 z-10">
-                    <div className="h-6 w-24 bg-gradient-to-r from-purple-300 to-pink-300 rounded-full animate-pulse"></div>
-                  </div>
-                  
-                  <div className="absolute inset-0 backdrop-blur-xl bg-white/80 border-2 border-purple-300/50 rounded-2xl animate-pulse"></div>
-                  <div className="relative p-8 space-y-6">
-                    {/* Plan name skeleton */}
-                    <div className="space-y-2">
-                      <div className="h-6 w-20 bg-gradient-to-r from-purple-200 to-pink-200 rounded-lg animate-pulse"></div>
-                      <div className="h-3 w-16 bg-gray-200 rounded animate-pulse"></div>
-                    </div>
-                    
-                    {/* Description skeleton */}
-                    <div className="space-y-2">
-                      <div className="h-4 w-full bg-gray-200 rounded animate-pulse"></div>
-                      <div className="h-4 w-4/5 bg-gray-200 rounded animate-pulse" style={{animationDelay: '0.1s'}}></div>
-                    </div>
-                    
-                    {/* Price skeleton */}
-                    <div className="space-y-1">
-                      <div className="h-8 w-24 bg-gradient-to-r from-purple-300 to-pink-300 rounded animate-pulse"></div>
-                      <div className="h-3 w-12 bg-gray-200 rounded animate-pulse"></div>
-                    </div>
-                    
-                    {/* Features skeleton */}
-                    <div className="space-y-3">
-                      {[1,2,3,4,5].map((i) => (
-                        <div key={i} className="flex items-center space-x-2">
-                          <div className="h-2 w-2 bg-purple-300 rounded-full animate-pulse" style={{animationDelay: `${i * 0.1}s`}}></div>
-                          <div className="h-3 w-36 bg-gray-200 rounded animate-pulse" style={{animationDelay: `${i * 0.1}s`}}></div>
-                        </div>
-                      ))}
-                    </div>
-                    
-                    {/* Button skeleton */}
-                    <div className="h-12 w-full bg-gradient-to-r from-purple-200 to-pink-200 border border-purple-300 rounded-xl animate-pulse"></div>
-                  </div>
-                </div>
-
-                {/* Skeleton Card 3 */}
-                <div className="relative group">
-                  <div className="absolute inset-0 backdrop-blur-xl bg-white/60 border border-gray-200/50 rounded-2xl animate-pulse"></div>
-                  <div className="relative p-8 space-y-6">
-                    {/* Plan name skeleton */}
-                    <div className="space-y-2">
-                      <div className="h-6 w-20 bg-gradient-to-r from-gray-200 to-gray-100 rounded-lg animate-pulse"></div>
-                      <div className="h-3 w-16 bg-gray-200 rounded animate-pulse"></div>
-                    </div>
-                    
-                    {/* Description skeleton */}
-                    <div className="space-y-2">
-                      <div className="h-4 w-full bg-gray-200 rounded animate-pulse"></div>
-                      <div className="h-4 w-2/3 bg-gray-200 rounded animate-pulse" style={{animationDelay: '0.1s'}}></div>
-                    </div>
-                    
-                    {/* Price skeleton */}
-                    <div className="space-y-1">
-                      <div className="h-8 w-24 bg-gradient-to-r from-blue-200 to-purple-200 rounded animate-pulse"></div>
-                      <div className="h-3 w-12 bg-gray-200 rounded animate-pulse"></div>
-                    </div>
-                    
-                    {/* Features skeleton */}
-                    <div className="space-y-3">
-                      {[1,2,3,4,5,6].map((i) => (
-                        <div key={i} className="flex items-center space-x-2">
-                          <div className="h-2 w-2 bg-gray-300 rounded-full animate-pulse" style={{animationDelay: `${i * 0.1}s`}}></div>
-                          <div className="h-3 w-40 bg-gray-200 rounded animate-pulse" style={{animationDelay: `${i * 0.1}s`}}></div>
-                        </div>
-                      ))}
-                    </div>
-                    
-                    {/* Button skeleton */}
-                    <div className="h-12 w-full bg-gradient-to-r from-gray-100 to-gray-50 border border-gray-200 rounded-xl animate-pulse"></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Actual PricingTable with light appearance */}
-            <div className="pricing-table">
-              <PricingTable 
-                appearance={lightAppearance}
-                checkoutProps={{
-                  appearance: checkoutAppearance
-                }}
-                fallback={
-                  <div className="flex justify-center items-center py-20">
-                    <div className="animate-spin rounded-full h-12 w-12 border-2 border-purple-500 border-t-transparent"></div>
-                  </div>
-                }
-              />
-            </div>
-          </div>
+          {!mounted ? (
+            <LoadingSkeleton />
+          ) : (
+            <PricingTable 
+              appearance={lightAppearance}
+              checkoutProps={{
+                appearance: checkoutAppearance
+              }}
+              fallback={<LoadingSkeleton />}
+            />
+          )}
         </div>
       </div>
 
-      {/* Global CSS for animations */}
+      {/* Simplified CSS to avoid hydration issues */}
       <style dangerouslySetInnerHTML={{
         __html: `
-          .skeleton-loader {
-            position: absolute;
-            inset: 0;
-            opacity: 1;
-            pointer-events: auto;
-            animation: skeleton-pulse 1.5s ease-in-out infinite alternate, fade-out 0.5s ease-in-out 2s forwards;
-          }
-          
-          .pricing-table {
-            opacity: 0;
-            animation: fade-in 0.8s ease-in-out 2.5s forwards;
-          }
-          
-          @keyframes skeleton-pulse {
-            0% { opacity: 0.4; }
-            100% { opacity: 0.8; }
-          }
-          
-          @keyframes fade-out {
-            0% { opacity: 1; pointer-events: auto; }
-            100% { opacity: 0; pointer-events: none; }
-          }
-          
-          @keyframes fade-in {
-            0% { opacity: 0; }
-            100% { opacity: 1; }
-          }
-
-          /* Additional custom styles for better integration */
           .pricing-table [data-clerk="card"] {
             transition: all 0.3s ease;
           }

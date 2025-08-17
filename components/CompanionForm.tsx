@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-nocheck
 
@@ -25,25 +24,32 @@ import {
     SelectTrigger,
     SelectValue,
 } from "@/components/ui/select"
+import {
+    Tooltip,
+    TooltipContent,
+    TooltipProvider,
+    TooltipTrigger,
+} from "@/components/ui/tooltip"
+import { Info } from "lucide-react"
 import {subjects} from "@/constants";
 import {Textarea} from "@/components/ui/textarea";
 import {createCompanion, newCompanionPermissions, getRemainingCompanionsThisMonth} from "@/lib/actions/companion.actions";
-import { useRouter } from "next/navigation"; // Use useRouter instead of redirect
+import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
 const formSchema = z.object({
-    name: z.string().min(1, { message: 'Companion is required.'}),
+    name: z.string().min(1, { message: 'Coach name is required.'}),
     subject: z.string().min(1, { message: 'Subject is required.'}),
-    topic: z.string().min(1, { message: 'Topic is required.'}),
-    voice: z.string().min(1, { message: 'Voice is required.'}),
-    style: z.string().min(1, { message: 'Style is required.'}),
-    duration: z.coerce.number().min(1, { message: 'Duration is required.'}),
+    topic: z.string().min(1, { message: 'Learning topic is required.'}),
+    voice: z.string().min(1, { message: 'Voice preference is required.'}),
+    style: z.string().min(1, { message: 'Teaching style is required.'}),
+    duration: z.coerce.number().min(1, { message: 'Session duration is required.'}),
 })
 
 const CompanionForm = () => {
     const [remaining, setRemaining] = useState(-1);
     const [isLoading, setIsLoading] = useState(false);
-    const router = useRouter(); // Add router hook
+    const router = useRouter();
 
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
@@ -74,7 +80,6 @@ const CompanionForm = () => {
         setIsLoading(true);
         
         try {
-            // Double-check permissions before creating
             const hasPermission = await newCompanionPermissions();
             
             if (!hasPermission) {
@@ -86,7 +91,6 @@ const CompanionForm = () => {
             const companion = await createCompanion(values);
 
             if(companion) {
-                // Use router.push instead of redirect for client-side navigation
                 router.push(`/coaches/${companion.id}`);
             } else {
                 console.log('Failed to create a companion');
@@ -95,181 +99,253 @@ const CompanionForm = () => {
         } catch (error) {
             console.error('Error creating companion:', error);
             alert('Failed to create companion. Please try again.');
-            setIsLoading(false); // Make sure to reset loading state on error
+            setIsLoading(false);
         }
-        // Note: Don't put setIsLoading(false) in finally block since successful creation will navigate away
     }
 
     return (
-        <div>
-            {remaining >= 0 && (
-                <div className="mb-6 p-4 bg-blue-50 border border-blue-200 rounded-lg">
-                    <p className="text-sm text-blue-700">
-                        You can create <strong>{remaining}</strong> more CleverCoach{remaining !== 1 ? 'es' : ''} this month.
-                    </p>
-                </div>
-            )}
-            
-            <Form {...form}>
-                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-                    <FormField
-                        control={form.control}
-                        name="name"
-                        render={({ field }) => (
-                            <FormItem>
-                                <FormLabel>CleverCoach name</FormLabel>
-                                <FormControl>
-                                    <Input
-                                        placeholder="Enter the CleverCoach name"
-                                        {...field}
-                                        className="input"
-                                    />
-                                </FormControl>
-                                <FormMessage />
-                            </FormItem>
-                        )}
-                    />
-                    <FormField
-                        control={form.control}
-                        name="subject"
-                        render={({ field }) => (
-                            <FormItem>
-                                <FormLabel>Subject</FormLabel>
-                                <FormControl>
-                                    <Select
-                                        onValueChange={field.onChange}
-                                        value={field.value}
-                                        defaultValue={field.value}
-                                    >
-                                        <SelectTrigger className="input capitalize">
-                                            <SelectValue placeholder="Select the subject" />
-                                        </SelectTrigger>
-                                        <SelectContent>
-                                            {subjects.map((subject) => (
-                                                <SelectItem
-                                                    value={subject}
-                                                    key={subject}
-                                                    className="capitalize"
-                                                >
-                                                    {subject}
+        <TooltipProvider>
+            <div>
+                {remaining >= 0 && (
+                    <div className="mb-6 p-4 bg-blue-50 border border-blue-200 rounded-lg">
+                        <p className="text-sm text-blue-700">
+                            You can create <strong>{remaining}</strong> more CleverCoach{remaining !== 1 ? 'es' : ''} this month.
+                        </p>
+                    </div>
+                )}
+                
+                <Form {...form}>
+                    <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+                        <FormField
+                            control={form.control}
+                            name="name"
+                            render={({ field }) => (
+                                <FormItem>
+                                    <FormLabel className="flex items-center gap-2">
+                                        Give Your Coach a Name
+                                        <Tooltip>
+                                            <TooltipTrigger asChild>
+                                                <Info className="h-4 w-4 text-gray-400 cursor-help" />
+                                            </TooltipTrigger>
+                                            <TooltipContent>
+                                                <p className="max-w-xs">Choose a memorable name for your AI tutor. This will help you identify it later when you have multiple coaches.</p>
+                                            </TooltipContent>
+                                        </Tooltip>
+                                    </FormLabel>
+                                    <FormControl>
+                                        <Input
+                                            placeholder="e.g., Math Mentor Mike, Grammar Guide Sarah"
+                                            {...field}
+                                            className="input"
+                                        />
+                                    </FormControl>
+                                    <FormMessage />
+                                </FormItem>
+                            )}
+                        />
+                        
+                        <FormField
+                            control={form.control}
+                            name="subject"
+                            render={({ field }) => (
+                                <FormItem>
+                                    <FormLabel className="flex items-center gap-2">
+                                        Subject Area
+                                        <Tooltip>
+                                            <TooltipTrigger asChild>
+                                                <Info className="h-4 w-4 text-gray-400 cursor-help" />
+                                            </TooltipTrigger>
+                                            <TooltipContent>
+                                                <p className="max-w-xs">Select the main academic subject your coach will specialize in.</p>
+                                            </TooltipContent>
+                                        </Tooltip>
+                                    </FormLabel>
+                                    <FormControl>
+                                        <Select
+                                            onValueChange={field.onChange}
+                                            value={field.value}
+                                            defaultValue={field.value}
+                                        >
+                                            <SelectTrigger className="input capitalize">
+                                                <SelectValue placeholder="Choose the subject your coach will teach" />
+                                            </SelectTrigger>
+                                            <SelectContent>
+                                                {subjects.map((subject) => (
+                                                    <SelectItem
+                                                        value={subject}
+                                                        key={subject}
+                                                        className="capitalize"
+                                                    >
+                                                        {subject}
+                                                    </SelectItem>
+                                                ))}
+                                            </SelectContent>
+                                        </Select>
+                                    </FormControl>
+                                    <FormMessage />
+                                </FormItem>
+                            )}
+                        />
+                        
+                        <FormField
+                            control={form.control}
+                            name="topic"
+                            render={({ field }) => (
+                                <FormItem>
+                                    <FormLabel className="flex items-center gap-2">
+                                        Specific Learning Goal
+                                        <Tooltip>
+                                            <TooltipTrigger asChild>
+                                                <Info className="h-4 w-4 text-gray-400 cursor-help" />
+                                            </TooltipTrigger>
+                                            <TooltipContent>
+                                                <p className="max-w-xs">Describe the specific concept, skill, or topic you want to learn. Be as detailed as possible for better coaching.</p>
+                                            </TooltipContent>
+                                        </Tooltip>
+                                    </FormLabel>
+                                    <FormControl>
+                                        <Textarea
+                                            placeholder="e.g., The difference between phrases and clauses in English grammar, or How to solve quadratic equations step by step"
+                                            {...field}
+                                            className="input min-h-[80px]"
+                                        />
+                                    </FormControl>
+                                    <FormDescription>
+                                        The more specific you are, the better your coach can help you learn.
+                                    </FormDescription>
+                                    <FormMessage />
+                                </FormItem>
+                            )}
+                        />
+
+                        <FormField
+                            control={form.control}
+                            name="voice"
+                            render={({ field }) => (
+                                <FormItem>
+                                    <FormLabel className="flex items-center gap-2">
+                                        Coach Voice
+                                        <Tooltip>
+                                            <TooltipTrigger asChild>
+                                                <Info className="h-4 w-4 text-gray-400 cursor-help" />
+                                            </TooltipTrigger>
+                                            <TooltipContent>
+                                                <p className="max-w-xs">Choose the voice type for your coach. This affects how your coach will sound during voice interactions.</p>
+                                            </TooltipContent>
+                                        </Tooltip>
+                                    </FormLabel>
+                                    <FormControl>
+                                        <Select
+                                            onValueChange={field.onChange}
+                                            value={field.value}
+                                            defaultValue={field.value}
+                                        >
+                                            <SelectTrigger className="input">
+                                                <SelectValue placeholder="Select your preferred voice type" />
+                                            </SelectTrigger>
+                                            <SelectContent>
+                                                <SelectItem value="male">
+                                                    Male Voice
                                                 </SelectItem>
-                                            ))}
-                                        </SelectContent>
-                                    </Select>
-                                </FormControl>
-                                <FormMessage />
-                            </FormItem>
-                        )}
-                    />
-                    <FormField
-                        control={form.control}
-                        name="topic"
-                        render={({ field }) => (
-                            <FormItem>
-                                <FormLabel>What should the CleverCoach help with?</FormLabel>
-                                <FormControl>
-                                    <Textarea
-                                        placeholder="Example: The differnce between phrases & clauses"
-                                        {...field}
-                                        className="input"
-                                    />
-                                </FormControl>
-                                <FormMessage />
-                            </FormItem>
-                        )}
-                    />
+                                                <SelectItem value="female">
+                                                    Female Voice
+                                                </SelectItem>
+                                            </SelectContent>
+                                        </Select>
+                                    </FormControl>
+                                    <FormMessage />
+                                </FormItem>
+                            )}
+                        />
+                        
+                        <FormField
+                            control={form.control}
+                            name="style"
+                            render={({ field }) => (
+                                <FormItem>
+                                    <FormLabel className="flex items-center gap-2">
+                                        Teaching Style
+                                        <Tooltip>
+                                            <TooltipTrigger asChild>
+                                                <Info className="h-4 w-4 text-gray-400 cursor-help" />
+                                            </TooltipTrigger>
+                                            <TooltipContent>
+                                                <p className="max-w-xs">
+                                                    <strong>Formal:</strong> Professional, structured lessons with academic language.<br/>
+                                                    <strong>Casual:</strong> Friendly, conversational approach with simple explanations.
+                                                </p>
+                                            </TooltipContent>
+                                        </Tooltip>
+                                    </FormLabel>
+                                    <FormControl>
+                                        <Select
+                                            onValueChange={field.onChange}
+                                            value={field.value}
+                                            defaultValue={field.value}
+                                        >
+                                            <SelectTrigger className="input">
+                                                <SelectValue placeholder="How should your coach teach?" />
+                                            </SelectTrigger>
+                                            <SelectContent>
+                                                <SelectItem value="formal">
+                                                    Formal - Structured and professional
+                                                </SelectItem>
+                                                <SelectItem value="casual">
+                                                    Casual - Friendly and conversational
+                                                </SelectItem>
+                                            </SelectContent>
+                                        </Select>
+                                    </FormControl>
+                                    <FormMessage />
+                                </FormItem>
+                            )}
+                        />
 
-                    <FormField
-                        control={form.control}
-                        name="voice"
-                        render={({ field }) => (
-                            <FormItem>
-                                <FormLabel>Voice</FormLabel>
-                                <FormControl>
-                                    <Select
-                                        onValueChange={field.onChange}
-                                        value={field.value}
-                                        defaultValue={field.value}
-                                    >
-                                        <SelectTrigger className="input">
-                                            <SelectValue
-                                                placeholder="Select the voice"
-                                            />
-                                        </SelectTrigger>
-                                        <SelectContent>
-                                            <SelectItem value="male">
-                                                Male
-                                            </SelectItem>
-                                            <SelectItem value="female">
-                                                Female
-                                            </SelectItem>
-                                        </SelectContent>
-                                    </Select>
-                                </FormControl>
-                                <FormMessage />
-                            </FormItem>
-                        )}
-                    />
-                    <FormField
-                        control={form.control}
-                        name="style"
-                        render={({ field }) => (
-                            <FormItem>
-                                <FormLabel>Style</FormLabel>
-                                <FormControl>
-                                    <Select
-                                        onValueChange={field.onChange}
-                                        value={field.value}
-                                        defaultValue={field.value}
-                                    >
-                                        <SelectTrigger className="input">
-                                            <SelectValue
-                                                placeholder="Select the style"
-                                            />
-                                        </SelectTrigger>
-                                        <SelectContent>
-                                            <SelectItem value="formal">
-                                                Formal
-                                            </SelectItem>
-                                            <SelectItem value="casual">
-                                                Casual
-                                            </SelectItem>
-                                        </SelectContent>
-                                    </Select>
-                                </FormControl>
-                                <FormMessage />
-                            </FormItem>
-                        )}
-                    />
-
-                    <FormField
-                        control={form.control}
-                        name="duration"
-                        render={({ field }) => (
-                            <FormItem>
-                                <FormLabel>Estimated session duration in minutes</FormLabel>
-                                <FormControl>
-                                    <Input
-                                        type="number"
-                                        placeholder="15"
-                                        {...field}
-                                        className="input"
-                                    />
-                                </FormControl>
-                                <FormMessage />
-                            </FormItem>
-                        )}
-                    />
-                    <Button 
-                        type="submit" 
-                        className="w-full cursor-pointer" 
-                        disabled={isLoading}
-                    >
-                        {isLoading ? 'Creating...' : 'Build Your CleverCoach'}
-                    </Button>
-                </form>
-            </Form>
-        </div>
+                        <FormField
+                            control={form.control}
+                            name="duration"
+                            render={({ field }) => (
+                                <FormItem>
+                                    <FormLabel className="flex items-center gap-2">
+                                        Session Length
+                                        <Tooltip>
+                                            <TooltipTrigger asChild>
+                                                <Info className="h-4 w-4 text-gray-400 cursor-help" />
+                                            </TooltipTrigger>
+                                            <TooltipContent>
+                                                <p className="max-w-xs">How long do you want each learning session to be? This helps your coach pace the lessons appropriately.</p>
+                                            </TooltipContent>
+                                        </Tooltip>
+                                    </FormLabel>
+                                    <FormControl>
+                                        <Input
+                                            type="number"
+                                            placeholder="15"
+                                            {...field}
+                                            className="input"
+                                            min="5"
+                                            max="120"
+                                        />
+                                    </FormControl>
+                                    <FormDescription>
+                                        Recommended: 15-30 minutes for focused learning sessions
+                                    </FormDescription>
+                                    <FormMessage />
+                                </FormItem>
+                            )}
+                        />
+                        
+                        <Button 
+                            type="submit" 
+                            className="w-full cursor-pointer" 
+                            disabled={isLoading}
+                        >
+                            {isLoading ? 'Creating Your Coach...' : 'Create My CleverCoach'}
+                        </Button>
+                    </form>
+                </Form>
+            </div>
+        </TooltipProvider>
     )
 }
 

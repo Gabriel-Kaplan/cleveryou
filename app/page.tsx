@@ -12,6 +12,7 @@ import Features from "@/components/Features"
 //import { recentSessions } from "@/constants"
 import {getAllCompanions, getRecentSessions} from "@/lib/actions/companion.actions";
 import {getSubjectColor} from "@/lib/utils";
+//import Steps from "@/components/Steps"
 
 // Force dynamic rendering
 export const dynamic = 'force-dynamic'
@@ -26,6 +27,8 @@ const Page = async () => {
       
       {/* 2. CREDIBILITY: Build trust with social proof */}
       <Features />
+
+  
       
       {/* 3. PROOF OF CONCEPT: Show the product in action */}
       <div className="mb-4">
@@ -45,7 +48,7 @@ const Page = async () => {
       {/* 4. SOCIAL PROOF: Recent activity shows others are using it */}
       <section className="home-section">
         <CompanionsList
-                title="Recently completed sessions"
+                title="Recently Completed Clever Sessions"
                 companions={recentSessionsCompanions}
                 classNames="w-2/3 max-lg:w-full"
             />

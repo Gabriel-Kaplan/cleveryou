@@ -7,6 +7,7 @@ import { ClerkProvider } from "@clerk/nextjs";
 const bricolage = Bricolage_Grotesque({
   variable: "--font-bricolage",
   subsets: ["latin"],
+  display: 'swap', // Improves font loading performance
 });
 
 export const metadata: Metadata = {
@@ -20,11 +21,24 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="">
-      <body className={`${bricolage.variable} antialiased`}>
-        <ClerkProvider appearance={{ variables: { colorPrimary: '#fe5933' }} }>
+    <html lang="en" className={bricolage.variable}>
+      <body className="antialiased">
+        <ClerkProvider 
+          appearance={{ 
+            variables: { 
+              colorPrimary: '#fe5933' 
+            },
+            elements: {
+              // Ensure consistent styling for Clerk components
+              formButtonPrimary: 'bg-[#fe5933] hover:bg-[#e54d2c] text-white',
+              card: 'bg-white/95 backdrop-blur-xl border border-gray-200',
+            }
+          }}
+          /* Add publishableKey if you haven't already
+          publishableKey={process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY}*/
+        >
           <Navbar />
-          {children}
+            {children}
         </ClerkProvider>
       </body>
     </html>

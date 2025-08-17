@@ -16,6 +16,9 @@ const CompanionsList = ({ title, companions, classNames }: CompanionsListProps) 
         index === self.findIndex(c => c?.id === companion.id)
     ) || [];
 
+    // Limit companions array to 6 items for homepage layout
+    const displayCompanions = uniqueCompanions.slice(0, 6);
+
     return (
         <article className={cn('companion-list', classNames)}>
             <div className="mb-8">
@@ -24,7 +27,7 @@ const CompanionsList = ({ title, companions, classNames }: CompanionsListProps) 
             </div>
 
             <div className="space-y-6">
-                {uniqueCompanions.map(({id, subject, name, topic, duration}) => (
+                {displayCompanions.map(({id, subject, name, topic, duration}) => (
                     <Link key={id} href={`/coaches/${id}`} className="block group">
                         <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 p-6 hover:shadow-lg hover:shadow-gray-100 dark:hover:shadow-gray-900/20 transition-all duration-300 hover:border-gray-300 dark:hover:border-gray-600 hover:-translate-y-0.5">
                             <div className="flex items-center justify-between gap-4">
@@ -109,7 +112,7 @@ const CompanionsList = ({ title, companions, classNames }: CompanionsListProps) 
             </div>
 
             {/* Empty State */}
-            {uniqueCompanions.length === 0 && (
+            {displayCompanions.length === 0 && (
                 <div className="text-center py-12">
                     <div className="inline-flex items-center justify-center w-16 h-16 bg-gray-100 dark:bg-gray-800 rounded-full mb-4">
                         <svg className="w-8 h-8 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">

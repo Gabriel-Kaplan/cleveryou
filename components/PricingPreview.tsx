@@ -102,7 +102,7 @@ const PricingPreview = () => {
           
           {/* Upgrade Now Button */}
           <Link href="/subscription">
-            <button className="mb-8 py-4 px-8 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-semibold rounded-xl transition-all duration-300 flex items-center justify-center gap-2 mx-auto shadow-lg hover:shadow-xl hover:scale-105">
+            <button className="mb-8 py-4 px-8 bg-gradient-to-r from-blue-600 to-pink-500 text-white font-semibold rounded-xl transition-all duration-300 flex items-center justify-center gap-2 mx-auto shadow-lg hover:shadow-xl hover:scale-105">
               Upgrade Now
               <ArrowRight className="w-5 h-5" />
             </button>

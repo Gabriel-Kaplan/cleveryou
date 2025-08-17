@@ -5,7 +5,7 @@ import { useEffect, useState, useRef } from 'react'
 import { vapi } from "@/lib/vapi.sdk";
 import Image from 'next/image';
 import Lottie, { LottieRefCurrentProps } from "lottie-react";
-import three_dots from "@/constants/3DotsSpeaking.json"
+import three_dots from "@/constants/Voice.json"
 import { addToSessionHistory } from "@/lib/actions/companion.actions";
 
 enum CallStatus {

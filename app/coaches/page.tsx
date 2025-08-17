@@ -50,7 +50,7 @@ const CompanionsPage = async ({ searchParams }: SearchParams) => {
             <div className="space-y-4">
               <h1 className="relative text-6xl md:text-7xl font-black mb-6 px-8 py-4">
               <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
-                Clever Coach
+                CleverCoach
               </span>
               <br />
               <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
@@ -67,7 +67,7 @@ const CompanionsPage = async ({ searchParams }: SearchParams) => {
             </div>
 
             {/* Create Coach Button */}
-            <div className="flex justify-center">
+            <div className="flex flex-col items-center space-y-3">
               <Link href="/coaches/new" className="group relative">
                 <div className="absolute -inset-0.5 bg-gradient-to-r from-pink-500 to-purple-500 rounded-xl blur opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-tilt"></div>
                 <button className="relative px-8 py-4 bg-white rounded-xl leading-none flex items-center gap-3 text-gray-900 font-medium transition-all duration-200 group-hover:bg-gray-50 border border-gray-200 group-hover:border-gray-300 shadow-lg">
@@ -82,6 +82,14 @@ const CompanionsPage = async ({ searchParams }: SearchParams) => {
                   </svg>
                 </button>
               </Link>
+              
+              {/* Sign-in Disclaimer */}
+              <p className="text-sm text-gray-400 max-w-lg text-center">
+                <svg className="inline h-4 w-4 mr-1 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                Sign up or sign in required to create and learn with CleverCoaches
+              </p>
             </div>
 
             {/* Stats */}
@@ -146,15 +154,20 @@ const CompanionsPage = async ({ searchParams }: SearchParams) => {
               {/* Enhanced CTA in empty state */}
               <div className="space-y-4">
                 <p className="text-gray-500 text-sm">Or create exactly what you need:</p>
-                <Link href="/coaches/new" className="group relative inline-block">
-                  <div className="absolute -inset-0.5 bg-gradient-to-r from-pink-500 to-purple-500 rounded-lg blur opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"></div>
-                  <button className="relative px-6 py-3 bg-white rounded-lg leading-none flex items-center gap-2 text-gray-900 font-medium transition-all duration-200 group-hover:bg-gray-50 border border-gray-200 shadow-md">
-                    <svg className="h-4 w-4 text-purple-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
-                    </svg>
-                    <span>Build Custom Coach</span>
-                  </button>
-                </Link>
+                <div className="flex flex-col items-center space-y-2">
+                  <Link href="/coaches/new" className="group relative inline-block">
+                    <div className="absolute -inset-0.5 bg-gradient-to-r from-pink-500 to-purple-500 rounded-lg blur opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"></div>
+                    <button className="relative px-6 py-3 bg-white rounded-lg leading-none flex items-center gap-2 text-gray-900 font-medium transition-all duration-200 group-hover:bg-gray-50 border border-gray-200 shadow-md">
+                      <svg className="h-4 w-4 text-purple-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                      </svg>
+                      <span>Build Custom Coach</span>
+                    </button>
+                  </Link>
+                  <p className="text-xs text-gray-400">
+                    Account required for coach creation
+                  </p>
+                </div>
               </div>
             </div>
           )}

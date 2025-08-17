@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronDown, Brain, Users, Shield, Zap, BookOpen, BarChart3 } from 'lucide-react';
+import { ChevronDown, Globe, Layers, GraduationCap, CreditCard, BarChart3, User, Smartphone } from 'lucide-react';
 import Link from 'next/link';
 
 interface Particle {
@@ -31,39 +31,45 @@ const FAQ = () => {
   const faqData = [
     {
       id: 1,
-      icon: Brain,
-      question: "How does the AI-powered personalization work?",
-      answer: "Our advanced AI analyzes each learner's progress, learning style, and performance patterns to create personalized learning paths. The system adapts content difficulty, suggests relevant resources, and optimizes study schedules in real-time, ensuring maximum engagement and retention."
+      icon: Globe,
+      question: "Do I need to download CleverYou?",
+      answer: "No downloads needed! CleverYou works directly in your web browser on any computer, tablet, or smartphone. Just log in and start learning instantly."
     },
     {
       id: 2,
-      icon: Users,
-      question: "Can I integrate with my existing team collaboration tools?",
-      answer: "Absolutely! Our platform seamlessly integrates with popular tools like Slack, Microsoft Teams, Zoom, and Google Workspace. We also offer robust API access for custom integrations and single sign-on (SSO) support for enterprise environments."
+      icon: Layers,
+      question: "What can I learn with CleverYou?",
+      answer: "CleverYou is designed for students at any grade level, but anyone who wants to learn can use it. You can study math, science, languages, history, test prep, and even ask the AI to teach you something new on the spot. The possibilities are endless! And new sunjects are being added all the time."
     },
     {
       id: 3,
-      icon: Shield,
-      question: "What security measures protect our learning data?",
-      answer: "We implement enterprise-grade security including AES-256 encryption, SOC 2 Type II compliance, GDPR adherence, and zero-trust architecture. All data is stored in secure cloud environments with regular security audits and 99.9% uptime SLA."
+      icon: GraduationCap,
+      question: "How does the AI tutor actually help me?",
+      answer: "The AI explains concepts step by step and can adjust to your learning level. If you say you're completely new to a topic, it will start from the basics in simple terms. If you're intermediate or advanced, it adapts to that level and challenges you with deeper explanations and practice."
     },
     {
       id: 4,
-      icon: Zap,
-      question: "How quickly can we deploy the platform for our organization?",
-      answer: "Most organizations are up and running within 48-72 hours. Our onboarding includes automated setup, content migration tools, user provisioning, and dedicated success manager support to ensure smooth deployment and adoption."
+      icon: CreditCard,
+      question: "Is CleverYou free to use?",
+      answer: "CleverYou offers a free plan with essential features, plus premium options that unlock unlimited practice, advanced insights, and additional AI-powered tools. You can get started free anytime."
     },
     {
       id: 5,
-      icon: BookOpen,
-      question: "What types of content formats are supported?",
-      answer: "Our platform supports videos, interactive presentations, SCORM packages, xAPI content, PDFs, quizzes, simulations, VR/AR modules, and AI-generated content. You can also create custom content using our built-in authoring tools."
+      icon: BarChart3,
+      question: "What can I do inside the CleverYou dashboard/ Do I get the full dashboard on every plan",
+      answer: "The CleverYou dashboard gives you a personalized learning hub. Depending on your plan: Clever Plan gives you access to selected parts of the dashboard, helping you track your progress and use core features. Genius Plan unlocks the full dashboard, including advanced insights, complete progress tracking, and all personalization features. This way, your dashboard grows with you as you upgrade."
     },
     {
       id: 6,
-      icon: BarChart3,
-      question: "What analytics and reporting capabilities are available?",
-      answer: "Get comprehensive insights with real-time dashboards, learner progress tracking, completion rates, skill gap analysis, ROI metrics, and predictive analytics. Export reports in multiple formats and set up automated reporting for stakeholders."
+      icon: User,
+      question: "Is CleverYou only for students?",
+      answer: "CleverYou is made with students in mind — from middle school to university — but it's also for anyone curious or wanting to learn something quickly. Whether you're brushing up on math, preparing for exams, or exploring a new subject, CleverYou adapts to your needs."
+    },
+    {
+      id: 7,
+      icon: Smartphone,
+      question: "Can I use CleverYou on mobile?",
+      answer: "CleverYou works on any mobile browser, so you can learn on the go from your phone or tablet. A dedicated mobile app is currently in mind to make learning even smoother."
     }
   ];
 
@@ -73,7 +79,7 @@ const FAQ = () => {
 
   return (
     <div className="min-h-screen bg-none pt-30 p-8 overflow-hidden relative">
-      {/* Floating Particles - Only render after client mount */}
+      {/* Floating Particles */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         {particles.map((particle) => (
           <motion.div
@@ -110,7 +116,6 @@ const FAQ = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          {/* Breadcrumb/Category */}
           <div className="flex items-center justify-center gap-2 text-sm">
             <span className="text-slate-500">CleverYou</span>
             <div className="h-1 w-1 bg-slate-400 rounded-full"></div>
@@ -134,7 +139,7 @@ const FAQ = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
           >
-            Everything you need to know about our AI-powered learning management system
+            Everything you need to know about how CleverYou helps you learn faster with AI
           </motion.p>
         </motion.div>
 
@@ -153,7 +158,6 @@ const FAQ = () => {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 whileHover={{ scale: 1.02 }}
               >
-                {/* Hover Glow Effect */}
                 <motion.div 
                   className="absolute inset-0 bg-gradient-to-r from-blue-50/0 via-purple-50/0 to-pink-50/0"
                   whileHover={{
@@ -234,25 +238,23 @@ const FAQ = () => {
               Our team is here to help you find the perfect solution for you.
             </p>
             <Link href={`mailto:contact@devtodefy.com?subject=CleverYou FAQ Question&body=Hello CleverYou Team,%0D%0A%0D%0AI have a question about CleverYou.%0D%0A%0D%0ACategory: [General / Features / Account / Other]%0D%0AMy question: [Please describe what you'd like to know]%0D%0AAdditional context: [Any relevant details that might help with your answer]%0D%0A%0D%0AThank you!%0D%0A%0D%0ABest regards,`}>
-            <motion.button 
-              className="group relative px-8 py-4 bg-none rounded-xl font-semibold text-black border-2 border-slate-400 overflow-hidden shadow-lg cursor-pointer"
-              whileHover={{ 
-                scale: 1.05,
-                boxShadow: "0 25px 50px -12px rgba(59, 130, 246, 0.25)"
-              }}
-              whileTap={{ scale: 0.95 }}
-              transition={{ type: "spring", stiffness: 400, damping: 17 }}
-            >
-              
-              <span className="relative z-10">Get in Touch</span>
-              
-              <motion.div 
-                className="absolute inset-0 bg-gradient-to-r from-purple-600 to-pink-600"
-                initial={{ opacity: 0 }}
-                whileHover={{ opacity: 1 }}
-                transition={{ duration: 0.3 }}
-              />
-            </motion.button>
+              <motion.button 
+                className="group relative px-8 py-4 bg-none rounded-xl font-semibold text-black border-2 border-slate-400 overflow-hidden shadow-lg cursor-pointer"
+                whileHover={{ 
+                  scale: 1.05,
+                  boxShadow: "0 25px 50px -12px rgba(59, 130, 246, 0.25)"
+                }}
+                whileTap={{ scale: 0.95 }}
+                transition={{ type: "spring", stiffness: 400, damping: 17 }}
+              >
+                <span className="relative z-10">Get in Touch</span>
+                <motion.div 
+                  className="absolute inset-0 bg-black/5"
+                  initial={{ opacity: 0 }}
+                  whileHover={{ opacity: 1 }}
+                  transition={{ duration: 0.3 }}
+                />
+              </motion.button>
             </Link>
           </motion.div>
         </motion.div>

@@ -1,4 +1,5 @@
 import { Sparkles, ArrowRight, Users, Zap } from 'lucide-react'
+import Link from 'next/link'
 
 const FooterCTA = () => {
   return (
@@ -36,7 +37,7 @@ const FooterCTA = () => {
         </h2>
         
         <p className="text-xl md:text-2xl text-gray-600 mb-8 max-w-2xl mx-auto leading-relaxed">
-          Join <span className="font-semibold text-cyan-700">the ambitious</span> learners already using our CleverCoaches to{' '}
+          Join <span className="font-semibold text-cyan-700">the ambitious</span>  already using our CleverCoaches to{' '}
           <span className="text-blue-700 font-medium">achieve extraordinary results</span>
         </p>
 
@@ -58,6 +59,7 @@ const FooterCTA = () => {
 
         {/* CTA Button */}
         <div className="flex flex-col items-center gap-4">
+          <Link href="/coaches">
           <button className="group relative bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-400 hover:to-blue-400 text-white px-10 py-5 rounded-2xl font-bold text-lg transition-all duration-300 hover:scale-105 shadow-lg shadow-cyan-500/25 hover:shadow-xl hover:shadow-cyan-500/40">
             <div className="flex items-center gap-3">
               <span>Get Started Free</span>
@@ -67,7 +69,7 @@ const FooterCTA = () => {
             {/* Animated border */}
             <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-cyan-400 to-blue-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10 blur-sm"></div>
           </button>
-          
+          </Link>
           <p className="text-sm text-gray-500 flex items-center gap-2">
             <span className="w-2 h-2 bg-green-500 rounded-full"></span>
             No credit card required • Start learning in 30 seconds
