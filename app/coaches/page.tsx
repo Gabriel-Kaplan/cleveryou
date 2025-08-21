@@ -48,7 +48,7 @@ const CompanionsPage = async ({ searchParams }: SearchParams) => {
 
             {/* Main Title */}
             <div className="space-y-4">
-              <h1 className="relative text-6xl md:text-7xl font-black mb-6 px-8 py-4">
+              <h1 className="relative text-5xl md:text-7xl font-black mb-6 px-8 py-4 m-auto">
               <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
                 CleverCoach
               </span>
